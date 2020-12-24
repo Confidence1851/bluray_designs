@@ -23,6 +23,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('*',function($view){
+
+            $view->with([
+                'logo_img' => route('index').env('ASSET_URL').'/logo.png',
+                'favicon_img' => route('index').env('ASSET_URL').'/logo.png',
+                'public_source' => route('index').env('ASSET_URL'),
+                'web_source' => route('index').env('ASSET_URL').'/web',
+                'admin_source' => route('index').env('ASSET_URL').'/admin',
+            ]);
+        });
+
     }
 }

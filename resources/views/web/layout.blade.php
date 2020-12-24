@@ -11,21 +11,24 @@
 
   <!-- css -->
   <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700" rel="stylesheet">
-  <link href="{{ asset('public/web/css/bootstrap.css') }}" rel="stylesheet" />
-  <link href="{{ asset('public/web/css/bootstrap-responsive.css') }}" rel="stylesheet" />
-  <link href="{{ asset('public/web/css/fancybox/jquery.fancybox.css') }}" rel="stylesheet">
-  <link href="{{ asset('public/web/css/jcarousel.css') }}" rel="stylesheet" />
-  <link href="{{ asset('public/web/css/flexslider.css') }}" rel="stylesheet" />
-  <link href="{{ asset('public/web/css/animate.css') }}" rel="stylesheet" />
-  <link href="{{ asset('public/web/css/style.css') }}" rel="stylesheet" />
+  {{-- <link href="{{ $web_source }}/css/bootstrap.css" rel="stylesheet" /> --}}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+  crossorigin="anonymous">
+  <link href="{{ $web_source }}/css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="{{ $web_source }}/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+  <link href="{{ $web_source }}/css/jcarousel.css" rel="stylesheet" />
+  <link href="{{ $web_source }}/css/flexslider.css" rel="stylesheet" />
+  <link href="{{ $web_source }}/css/animate.css" rel="stylesheet" />
+  <link href="{{ $web_source }}/css/style.css" rel="stylesheet" />
   <!-- Theme skin -->
-  <link href="{{ asset('public/web/skins/default.css') }}" rel="stylesheet" />
+  <link href="{{ $web_source }}/skins/default.css" rel="stylesheet" />
   <!-- Fav and touch icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('public/web/ico/apple-touch-icon-144-precomposed.png') }}" />
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('public/web/ico/apple-touch-icon-114-precomposed.png') }}" />
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('public/web/ico/apple-touch-icon-72-precomposed.png') }}" />
-  <link rel="apple-touch-icon-precomposed" href="{{ asset('public/web/ico/apple-touch-icon-57-precomposed.png') }}" />
-  <link rel="shortcut icon" href="{{ asset('public/web/ico/favicon.png') }}" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ $web_source }}/ico/apple-touch-icon-144-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ $web_source }}/ico/apple-touch-icon-114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ $web_source }}/ico/apple-touch-icon-72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="{{ $web_source }}/ico/apple-touch-icon-57-precomposed.png" />
+  <link rel="shortcut icon" href="{{ $web_source }}/ico/favicon.png" />
 
   <!-- =======================================================
     Theme Name: Flattern
@@ -46,6 +49,7 @@
     }
 
   </style>
+  @yield('style')
 </head>
 
 <body>
@@ -66,7 +70,8 @@
       </div>
     </div>
     <!-- end toggle top area -->
-    <!-- start header -->
+   @if ($withHeader ?? true)
+        <!-- start header -->
     <header>
       <div class="container ">
         <!-- hidden top area toggle link -->
@@ -231,7 +236,7 @@
         <div class="row">
           <div class="span4">
             <div class="logo">
-              <a href="{{ url('/') }}"><img src="{{ asset('public/web/img/logo.png') }}" alt="" width="300" class="Bluraydesigns logo" /></a>
+              <a href="{{ url('/') }}"><img src="{{ $web_source }}/img/logo.png" alt="" width="300" class="Bluraydesigns logo" /></a>
               
             </div>
           </div>
@@ -253,7 +258,9 @@
                       </ul>
                     </li>
                      
-                     <li><a href="{{ route('about_us') }}">ABOUT US </a></li>
+                    <li><a href="{{ route('about_us') }}">ABOUT US </a></li>
+
+                    <li><a href="{{ route("brand_4_free") }}">BRAND 4 FREE </a></li>
                      
                     <li class="dropdown" style="display:none">
                       <a href="#">Portfolio <i class="icon-angle-down"></i></a>
@@ -291,6 +298,7 @@
       </div>
     </header>
     <!-- end header -->
+   @endif
 
 
 @yield('content')
@@ -310,128 +318,130 @@
         </div>
       </div>
     </section>
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="span3">
-            <div class="widget">
-              <h5 class="widgetheading" style="color:#0CF;">Bluraydesigns</h5>
-              <ul class="link-list">
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Product & Services</a></li>
-                <li><a href="#">Explore our portfolio</a></li> 
-                <li><a href="#">Get in touch with us</a></li>
-                 <li><a href="#">Blog</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="span3">
-            <div class="widget">
-              <h5 class="widgetheading" style="color:#0CF;">Important stuff</h5>
-              <ul class="link-list">
-                <li><a href="#">Paper Quality</a></li>
-                <li><a href="#">Printing Machines and Methods</a></li>
-                <li><a href="#">Privacy policy</a></li>
-                <li><a href="#">Career center</a></li>
-               
-              </ul>
-            </div>
-          </div>
-          <div class="span3">
-            <div class="widget">
-              <h5 class="widgetheading" style="color:#0CF;">Follow us on:
-              
-              
-              <div class="span6 pull-left">
-              <ul class="social-network">
-                <li><a href="#" data-placement="bottom" title="Facebook"><i class="icon-facebook icon-square"></i></a></li>
-                <li><a href="#" data-placement="bottom" title="Twitter"><i class="icon-twitter icon-square"></i></a></li>
-                <li><a href="#" data-placement="bottom" title="Linkedin"><i class="icon-linkedin icon-square"></i></a></li>
-                <li><a href="#" data-placement="bottom" title="Pinterest"><i class="icon-pinterest icon-square"></i></a></li>
-                <li><a href="#" data-placement="bottom" title="Google plus"><i class="icon-google-plus icon-square"></i></a></li>
-              </ul>
-            </div>
-              
-              
-               </h5>
-              <div class="flickr_badge">
-        <div id="fb-root"></div>
-
-              <div class="clear">
-              </div>
-              
-              <div class="fb-page" data-href="https://www.facebook.com/bluraydesigntech/" data-tabs="timeline, messages" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-height="150" data-width="300" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/bluraydesigntech/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/bluraydesigntech/">Bluray DesignTech</a></blockquote></div>
-            </div>
-          </div>
-          </div>
-          
-          
-          
-          
-          <div class="span3">
-            <div class="widget">
-              <h5 class="widgetheading">Get in touch with us</h5>
-              <address>
-								<strong>Bluray DesignTech</strong><br>
-								 Bogije Ultra Modern Complex,<br>
-								 Ibeju-Lekki, Lagos, Nigeria.
-					 		</address>
-              <p>
-                <i class="icon-phone"></i> (+234) 0903 010 6794 <br>
-                <i class="icon-envelope-alt"></i> info@bluraydesigns.com
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="sub-footer">
+    @if ($withFooter ?? true)
+      <footer>
         <div class="container">
           <div class="row">
-            <div class="span6">
-              <div class="copyright">
-                <p>
-                  <span>&copy; Flattern - All right reserved.</span>
-                </p>
-                <div class="credits">
-                  <!--
-                    All the links in the footer should remain intact.
-                    You can delete the links only if you purchased the pro version.
-                    Licensing information: https://bootstrapmade.com/license/
-                    Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Flattern
-                  -->
-                  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                </div>
+            <div class="span3">
+              <div class="widget">
+                <h5 class="widgetheading" style="color:#0CF;">Bluraydesigns</h5>
+                <ul class="link-list">
+                  <li><a href="#">About us</a></li>
+                  <li><a href="#">Product & Services</a></li>
+                  <li><a href="#">Explore our portfolio</a></li> 
+                  <li><a href="#">Get in touch with us</a></li>
+                  <li><a href="#">Blog</a></li>
+                </ul>
               </div>
             </div>
+            <div class="span3">
+              <div class="widget">
+                <h5 class="widgetheading" style="color:#0CF;">Important stuff</h5>
+                <ul class="link-list">
+                  <li><a href="#">Paper Quality</a></li>
+                  <li><a href="#">Printing Machines and Methods</a></li>
+                  <li><a href="#">Privacy policy</a></li>
+                  <li><a href="#">Career center</a></li>
+                
+                </ul>
+              </div>
+            </div>
+            <div class="span3">
+              <div class="widget">
+                <h5 class="widgetheading" style="color:#0CF;">Follow us on:
+                
+                
+                <div class="span6 pull-left">
+                <ul class="social-network">
+                  <li><a href="#" data-placement="bottom" title="Facebook"><i class="icon-facebook icon-square"></i></a></li>
+                  <li><a href="#" data-placement="bottom" title="Twitter"><i class="icon-twitter icon-square"></i></a></li>
+                  <li><a href="#" data-placement="bottom" title="Linkedin"><i class="icon-linkedin icon-square"></i></a></li>
+                  <li><a href="#" data-placement="bottom" title="Pinterest"><i class="icon-pinterest icon-square"></i></a></li>
+                  <li><a href="#" data-placement="bottom" title="Google plus"><i class="icon-google-plus icon-square"></i></a></li>
+                </ul>
+              </div>
+                
+                
+                </h5>
+                <div class="flickr_badge">
+          <div id="fb-root"></div>
+
+                <div class="clear">
+                </div>
+                
+                <div class="fb-page" data-href="https://www.facebook.com/bluraydesigntech/" data-tabs="timeline, messages" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-height="150" data-width="300" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/bluraydesigntech/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/bluraydesigntech/">Bluray DesignTech</a></blockquote></div>
+              </div>
+            </div>
+            </div>
             
+            
+            
+            
+            <div class="span3">
+              <div class="widget">
+                <h5 class="widgetheading">Get in touch with us</h5>
+                <address>
+                  <strong>Bluray DesignTech</strong><br>
+                  Bogije Ultra Modern Complex,<br>
+                  Ibeju-Lekki, Lagos, Nigeria.
+                </address>
+                <p>
+                  <i class="icon-phone"></i> (+234) 0903 010 6794 <br>
+                  <i class="icon-envelope-alt"></i> info@bluraydesigns.com
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+        <div id="sub-footer">
+          <div class="container">
+            <div class="row">
+              <div class="span6">
+                <div class="copyright">
+                  <p>
+                    <span>&copy; Flattern - All right reserved.</span>
+                  </p>
+                  <div class="credits">
+                    <!--
+                      All the links in the footer should remain intact.
+                      You can delete the links only if you purchased the pro version.
+                      Licensing information: https://bootstrapmade.com/license/
+                      Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Flattern
+                    -->
+                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </footer>
+    @endif
   </div>
   <a href="#" class="scrollup"><i class="icon-chevron-up icon-square icon-32 active"></i></a>
   
   <!-- javascript
     ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script src="{{ asset('public/web/js/jquery.js') }}"></script>
-  <script src="{{ asset('public/web/js/jquery.easing.1.3.js') }}"></script>
-  <script src="{{ asset('public/web/js/bootstrap.js') }}"></script>
-  <script src="{{ asset('public/web/js/jcarousel/jquery.jcarousel.min.js') }}"></script>
-  <script src="{{ asset('public/web/js/jquery.fancybox.pack.js') }}"></script>
-  <script src="{{ asset('public/web/js/jquery.fancybox-media.js') }}"></script>
-  <script src="{{ asset('public/web/js/google-code-prettify/prettify.js') }}"></script>
-  <script src="{{ asset('public/web/js/portfolio/jquery.quicksand.js') }}"></script>
-  <script src="{{ asset('public/web/js/portfolio/setting.js') }}"></script>
-  <script src="{{ asset('public/web/js/jquery.flexslider.js') }}"></script>
-  <script src="{{ asset('public/web/js/jquery.nivo.slider.js') }}"></script>
-  <script src="{{ asset('public/web/js/modernizr.custom.js') }}"></script>
-  <script src="{{ asset('public/web/js/jquery.ba-cond.min.js') }}"></script>
-  <script src="{{ asset('public/web/js/jquery.slitslider.js') }}"></script>
-  <script src="{{ asset('public/web/js/animate.js') }}"></script>
-  <script src="{{ asset('public/web/js/wow.js') }}"></script>
-  <script src="{{ asset('public/web/js/waypoints.min.js') }}"></script>
-  <script src="{{ asset('public/web/js/counterup.min.js') }}"></script>
+  <script src="{{ $web_source }}/js/jquery.js"></script>
+  <script src="{{ $web_source }}/js/jquery.easing.1.3.js"></script>
+  <script src="{{ $web_source }}/js/bootstrap.js"></script>
+  <script src="{{ $web_source }}/js/jcarousel/jquery.jcarousel.min.js"></script>
+  <script src="{{ $web_source }}/js/jquery.fancybox.pack.js"></script>
+  <script src="{{ $web_source }}/js/jquery.fancybox-media.js"></script>
+  <script src="{{ $web_source }}/js/google-code-prettify/prettify.js"></script>
+  <script src="{{ $web_source }}/js/portfolio/jquery.quicksand.js"></script>
+  <script src="{{ $web_source }}/js/portfolio/setting.js"></script>
+  <script src="{{ $web_source }}/js/jquery.flexslider.js"></script>
+  <script src="{{ $web_source }}/js/jquery.nivo.slider.js"></script>
+  <script src="{{ $web_source }}/js/modernizr.custom.js"></script>
+  <script src="{{ $web_source }}/js/jquery.ba-cond.min.js"></script>
+  <script src="{{ $web_source }}/js/jquery.slitslider.js"></script>
+  <script src="{{ $web_source }}/js/animate.js"></script>
+  <script src="{{ $web_source }}/js/wow.js"></script>
+  <script src="{{ $web_source }}/js/waypoints.min.js"></script>
+  <script src="{{ $web_source }}/js/counterup.min.js"></script>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0"></script>
 
   <script type="text/javascript">
@@ -470,7 +480,7 @@
 
   <!-- Template Custom JavaScript File -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
-  <script src="{{ asset('public/web/js/custom.js') }}"></script>
+  <script src="{{ $web_source }}/js/custom.js"></script>
 
 </body>
 </html>

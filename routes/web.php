@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,42 +11,29 @@
 |
 */
 
- Route::get('/', function () {
-    return view('welcome');
- });
 
-use Illuminate\Support\Facades\Route;
-
-Route::get('/brandfor','brandforfreecontroller@brandforfree');
+Route::get('/brand-for-free','BrandForFreeController@index')->name("brand_4_free");
+Route::get('/brand','BrandForFreeController@brand');
+Route::get('/printoption', 'BrandForFreeController@printoption');
+Route::get('/brand-for-free/get-started', 'BrandForFreeController@get_started')->name("get_started");
 
 
 
 
-Route::get('/brand','webcontroller@brand');
+Route::get('/', 'WebController@index')->name('index');
+Route::get('/blog', 'WebController@blog')->name('blog');
+Route::get('/contact-us', 'WebController@contact')->name('contact');
+Route::post('/contact-message', 'WebController@contactMsg')->name('contactMsg');
+Route::get('/about-us', 'WebController@about_us')->name('about_us');
+Route::get('/all-products', 'WebController@all_products')->name('all_products');
+Route::get('/product-detail/{id}', 'WebController@productdetail')->name('productdetail');
+Route::get('/portfolio-products-categories/{name}', 'WebController@portfolio')->name('portfolio');
+Route::get('/blog/{id}/{slug}', 'WebController@blogpost')->name('blogpost');
+Route::post('/comment', 'WebController@comment')->name('comment');
 
-Route::get('/printoption', 'printoptioncontroller@printoption');
+Auth::routes();
 
-
-
-Route::get('/reg', 'reg_brandforfreecontroller@reg_brandforfree');
-
-
-
-
-//Route::get('/', 'WebController@index')->name('index');
-//Route::get('/blog', 'WebController@blog')->name('blog');
-//Route::get('/contact-us', 'WebController@contact')->name('contact');
-//Route::post('/contact-message', 'WebController@contactMsg')->name('contactMsg');
-//Route::get('/about-us', 'WebController@about_us')->name('about_us');
-//Route::get('/all-products', 'WebController@all_products')->name('all_products');
-//Route::get('/product-detail/{id}', 'WebController@productdetail')->name('productdetail');
-//Route::get('/portfolio-products-categories/{name}', 'WebController@portfolio')->name('portfolio');
-//Route::get('/blog/{id}/{slug}', 'WebController@blogpost')->name('blogpost');
-//Route::post('/comment', 'WebController@comment')->name('comment')//;
-
-//Auth::routes();
-
-/*Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/place-order', 'OrderController@place_order')->name('place_order');
 
 Route::group(['middleware'=> ['admin']],function(){
@@ -94,5 +81,5 @@ Route::group(['middleware'=> ['admin']],function(){
     Route::get('/edit-post/{id}', 'HomeController@editpost')->name('editpost');
     Route::get('/users', 'HomeController@users')->name('users');
 });
-\*
+
 

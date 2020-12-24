@@ -7,11 +7,11 @@
       <div id="nivo-slider">
         <div class="nivo-slider">
           <!-- Slide #1 image -->
-          <img src="{{ asset('public/web/img/slides/nivo/bg-1.jpg') }}" alt="" title="#caption-1" />
+          <img src="{{ $web_source }}/img/slides/nivo/bg-1.jpg" alt="" title="#caption-1" />
           <!-- Slide #2 image -->
-          <img src="{{ asset('public/web/img/slides/nivo/bg-2.jpg') }}" alt="" title="#caption-2" />
+          <img src="{{ $web_source }}/img/slides/nivo/bg-2.jpg" alt="" title="#caption-2" />
           <!-- Slide #3 image -->
-          <img src="{{ asset('public/web/img/slides/nivo/bg-3.jpg') }}" alt="" title="#caption-3" />
+          <img src="{{ $web_source }}/img/slides/nivo/bg-3.jpg" alt="" title="#caption-3" />
         </div>
         <div class="container">
           <div class="row">
@@ -331,7 +331,7 @@ color:#333;
     
         
         <div class="facts-img">
-          <img src="{{ asset('public/web/img/facts-img.png') }}" alt="" class="img-fluid">
+          <img src="{{ $web_source }}/img/facts-img.png') }}" alt="" class="img-fluid">
         </div>
 
       </div>
@@ -340,7 +340,7 @@ color:#333;
         </div>
       </div>
     </section>
-    <section id="content" style="background-image:url({{ asset('public/web/img/bodybg/website-background.jpg') }});"  >
+    <section id="content" style="background-image:url({{ $web_source }}/img/bodybg/website-background.jpg);"  >
       <div class="container wow fadeInUpBig" style="margin-top:0%;">
         <div class="row" >
         <div class=" span8 offset2" ><H6 style="font-family:'Century Gothic', Arial, Helvetica, sans-serif; margin:0PX; padding-bottom:0px; text-align:center;">OUR COMPLETE </h6>
@@ -446,89 +446,89 @@ color:#333;
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 design" data-id="id-0" data-type="web">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Bluray Signage" href="{{ asset('public/web/img/works/full/bluray-new-signage.jpg') }}">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Bluray Signage" href="{{ $web_source }}/img/works/full/bluray-new-signage.jpg">
 						<span class="overlay-img"></span>
 						<span class="overlay-img-thumb font-icon-plus"></span>
 						</a>
                     <!-- Thumb Image and Description -->
-                    <img src="{{ asset('public/web/img/works/thumbs/bluray-signage-small.jpg') }}" alt="Design and Installation of Bluraydesigns Signage at Bogije, Lekki, Lagos.">
+                    <img src="{{ $web_source }}/img/works/thumbs/bluray-signage-small.jpg" alt="Design and Installation of Bluraydesigns Signage at Bogije, Lekki, Lagos.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 design" data-id="id-1" data-type="icon">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Lumstic Signage" href="{{ asset('public/web/img/works/full/lumstic-signage.jpg') }}">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Lumstic Signage" href="{{ $web_source }}/img/works/full/lumstic-signage.jpg">
 						<span class="overlay-img"></span>
 						<span class="overlay-img-thumb font-icon-plus"></span>
 						</a>
                     <!-- Thumb Image and Description -->
-                    <img src="{{ asset('public/web/img/works/thumbs/lumstic-small.jpg') }}" alt="A 2x4ft Fabricated Plastic Board Signage for Lumstic Enterprise">
+                    <img src="{{ $web_source }}/img/works/thumbs/lumstic-small.jpg" alt="A 2x4ft Fabricated Plastic Board Signage for Lumstic Enterprise">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 photography" data-id="id-2" data-type="illustrator">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Dominant Aluminiums Business Card" href="{{ asset('public/web/img/works/full/dominant-biz-card.jpg') }}">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Dominant Aluminiums Business Card" href="{{ $web_source }}/img/works/full/dominant-biz-card.jpg">
 						<span class="overlay-img"></span>
 						<span class="overlay-img-thumb font-icon-plus"></span>
 						</a>
                     <!-- Thumb Image and Description -->
-                    <img src="{{ asset('public/web/img/works/thumbs/dominant-small.jpg') }}" alt="Business Card Design + Print for Dominant Aluminium with a round edge cut and glossy lamination finishing.">
+                    <img src="{{ $web_source }}/img/works/thumbs/dominant-small.jpg" alt="Business Card Design + Print for Dominant Aluminium with a round edge cut and glossy lamination finishing.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 photography" data-id="id-2" data-type="illustrator">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Splash Business Cards" href="{{ asset('public/web/img/works/full/splash-mockup.jpg') }}">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Splash Business Cards" href="{{ $web_source }}/img/works/full/splash-mockup.jpg">
 						<span class="overlay-img"></span>
 						<span class="overlay-img-thumb font-icon-plus"></span>
 						</a>
                     <!-- Thumb Image and Description -->
-                    <img src="{{ asset('public/web/img/works/thumbs/splash-small.jpg') }}" alt="Business Card Design + Print for Splash Paints with a round edge cut and glossy lamination finishing.">
+                    <img src="{{ $web_source }}/img/works/thumbs/splash-small.jpg" alt="Business Card Design + Print for Splash Paints with a round edge cut and glossy lamination finishing.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 photography" data-id="id-4" data-type="web">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Northbridge Energy Flyer" href="{{ asset('public/web/img/works/full/northbridge-flyer.jpg') }}">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Northbridge Energy Flyer" href="{{ $web_source }}/img/works/full/northbridge-flyer.jpg">
 						<span class="overlay-img"></span>
 						<span class="overlay-img-thumb font-icon-plus"></span>
 						</a>
                     <!-- Thumb Image and Description -->
-                    <img src="{{ asset('public/web/img/works/thumbs/northbridge-flyer-small.jpg') }}" alt="A5 full colour flyer design and print for Northbridge Energy Limited">
+                    <img src="{{ $web_source }}/img/works/thumbs/northbridge-flyer-small.jpg" alt="A5 full colour flyer design and print for Northbridge Energy Limited">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 photography" data-id="id-5" data-type="icon">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Northbridge Vehicle Branding" href="{{ asset('public/web/img/works/full/northbridge-vehicle-branding.jpg') }}">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Northbridge Vehicle Branding" href="{{ $web_source }}/img/works/full/northbridge-vehicle-branding.jpg">
 						<span class="overlay-img"></span>
 						<span class="overlay-img-thumb font-icon-plus"></span>
 						</a>
                     <!-- Thumb Image and Description -->
-                    <img src="{{ asset('public/web/img/works/thumbs/vehicle-branding.jpg') }}" alt="Full Vehicle Branding project for Northbridge Energy">
+                    <img src="{{ $web_source }}/img/works/thumbs/vehicle-branding.jpg" alt="Full Vehicle Branding project for Northbridge Energy">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 photography" data-id="id-2" data-type="illustrator">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Official Website - Triple  Aluminium Systems" href="{{ asset('public/web/img/works/full/triplec-website.jpg') }}">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Official Website - Triple  Aluminium Systems" href="{{ $web_source }}/img/works/full/triplec-website.jpg">
 						<span class="overlay-img"></span>
 						<span class="overlay-img-thumb font-icon-plus"></span>
 						</a>
                     <!-- Thumb Image and Description -->
-                   <img src="{{ asset('public/web/img/works/thumbs/triplec-website-small.jpg') }}" alt="Fully responsive website built for Tripple C Aluminium Systems Limited - http://tripplecaluminium.com/ ">
+                   <img src="{{ $web_source }}/img/works/thumbs/triplec-website-small.jpg" alt="Fully responsive website built for Tripple C Aluminium Systems Limited - http://tripplecaluminium.com/ ">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 design" data-id="id-0" data-type="web">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Boldlink Field Oil & Gas Company Profile" href="{{ asset('public/web/img/works/full/boldlink.jpg') }}">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Boldlink Field Oil & Gas Company Profile" href="{{ $web_source }}/img/works/full/boldlink.jpg">
 						<span class="overlay-img"></span>
 						<span class="overlay-img-thumb font-icon-plus"></span>
 						</a>
                     <!-- Thumb Image and Description -->
-                    <img src="{{ asset('public/web/img/works/thumbs/boldlink-small.jpg') }}" alt="Full Colour A4 Size Company Profile Design and Print for Boldlink Field Oil & Gas.">
+                    <img src="{{ $web_source }}/img/works/thumbs/boldlink-small.jpg" alt="Full Colour A4 Size Company Profile Design and Print for Boldlink Field Oil & Gas.">
                   </li>
                   <!-- End Item Project -->
                 </ul>
@@ -590,65 +590,65 @@ color:#333;
             <ul id="mycarousel" class="jcarousel-skin-tango recent-jcarousel clients">
               <li>
                 <a href="#">
-					<img src="{{ asset('public/web/img/dummies/clients/northbridge.png') }}" class="client-logo" alt="" />
+					<img src="{{ $web_source }}/img/dummies/clients/northbridge.png') }}" class="client-logo" alt="" />
 					</a>
               </li>
               <li>
                 <a href="#">
-					<img src="{{ asset('public/web/img/dummies/clients/bready.png') }}" class="client-logo" alt="" />
+					<img src="{{ $web_source }}/img/dummies/clients/bready.png') }}" class="client-logo" alt="" />
 					</a>
               </li>
               <li>
                 <a href="#">
-					<img src="{{ asset('public/web/img/dummies/clients/chrisabella.png') }}" class="client-logo" alt="" />
+					<img src="{{ $web_source }}/img/dummies/clients/chrisabella.png') }}" class="client-logo" alt="" />
 					</a>
               </li>
               <li>
                 <a href="#">
-					<img src="{{ asset('public/web/img/dummies/clients/onkleonz.png') }}" class="client-logo" alt="" />
+					<img src="{{ $web_source }}/img/dummies/clients/onkleonz.png') }}" class="client-logo" alt="" />
 					</a>
               </li>
               <li>
                 <a href="#">
-					<img src="{{ asset('public/web/img/dummies/clients/rarefruits.png') }}" class="client-logo" alt="" />
+					<img src="{{ $web_source }}/img/dummies/clients/rarefruits.png') }}" class="client-logo" alt="" />
 					</a>
               </li>
               <li>
                 <a href="#">
-					<img src="{{ asset('public/web/img/dummies/clients/savanahgrill.png') }}" class="client-logo" alt="" />
+					<img src="{{ $web_source }}/img/dummies/clients/savanahgrill.png') }}" class="client-logo" alt="" />
 					</a>
               </li>
               <li>
                 <a href="#">
-					<img src="{{ asset('public/web/img/dummies/clients/boldlink.png') }}" class="client-logo" alt="" />
+					<img src="{{ $web_source }}/img/dummies/clients/boldlink.png') }}" class="client-logo" alt="" />
 					</a>
               </li>
               <li>
                 <a href="#">
-					<img src="{{ asset('public/web/img/dummies/clients/raldbelle.png') }}" class="client-logo" alt="" />
+					<img src="{{ $web_source }}/img/dummies/clients/raldbelle.png') }}" class="client-logo" alt="" />
 					</a>
               </li>
              
               <li>
                 <a href="#">
-					<img src="{{ asset('public/web/img/dummies/clients/landvantage.png') }}" class="client-logo" alt="" />
+					<img src="{{ $web_source }}/img/dummies/clients/landvantage.png') }}" class="client-logo" alt="" />
 					</a>
               </li>
               <li>
                 <a href="#">
-					<img src="{{ asset('public/web/img/dummies/clients/inasa.png') }}" class="client-logo" alt="" />
+					<img src="{{ $web_source }}/img/dummies/clients/inasa.png') }}" class="client-logo" alt="" />
 					</a>
               </li>
               <li>
                 <a href="#">
-					<img src="{{ asset('public/web/img/dummies/clients/golden.png') }}" class="client-logo" alt="" />
+					<img src="{{ $web_source }}/img/dummies/clients/golden.png') }}" class="client-logo" alt="" />
 					</a>
               </li>
               
               
                <li>
                 <a href="#">
-					<img src="{{ asset('public/web/img/dummies/clients/delantech.png') }}" class="client-logo" alt="" />
+					<img src="{{ $web_source }}/img/dummies/clients/delantech.png') }}" class="client-logo" alt="" />
 					</a>
               </li>
               

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class brandforfreecontroller extends Controller
+class BrandForFreeController extends Controller
 {
-    public function brandforfree () {
-
-        return view('admin.brandforfree');
-
+    public function index(){
+        return view("web.brand4free.index");
     }
 
+    public function get_started(){
+        return view("web.brand4free.get_started");
+    }
 }

@@ -26,6 +26,10 @@ Route::get('/portfolio-products-categories/{name}', 'WebController@portfolio')->
 Route::get('/blog/{id}/{slug}', 'WebController@blogpost')->name('blogpost');
 Route::post('/comment', 'WebController@comment')->name('comment');
 
+Route::prefix("brand-4-free")->as("brandforfree")->group( function(){
+    Route::post('/index', 'WebController@comment')->name('comment');
+})
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

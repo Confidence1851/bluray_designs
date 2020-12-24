@@ -22,8 +22,8 @@ class WebController extends Controller
         $products = Product::where('status','Active')->orderby('created_at','desc')->limit(8)->get();
         return view('web.home',compact('products'));
     }
-    
-    
+
+
     public function all_products()
     {
         $products = Product::where('status','Active')->orderby('name','asc')->get();
@@ -58,8 +58,12 @@ class WebController extends Controller
         $relates = Post::where('id','<>',$post->id)->where('category',$post->category)->orderby('updated_at','desc')->paginate(10);
         return view('web.post-info',compact('post','comments','relates'));
     }
+    public function brand (){
+    
+        return view('admin.brand4freevote');
+    }
 
-    public function comment(Request $request){ 
+    public function comment(Request $request){
         if(Auth::check()){
             $user_id = 'required';
             $name = 'nullable';
@@ -100,7 +104,7 @@ class WebController extends Controller
         ]);
         $contact = ContactUs::create($data);
         Mail::to(env('CONTACT_MAIL') ?? env('MAIL_FROM_ADDRESS'))->send(new ContactMail($data));
-        
+
         return redirect()->back()->withStatus('submitted');
     }
 

@@ -11,10 +11,7 @@
 
   <!-- css -->
   <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700" rel="stylesheet">
-  {{-- <link href="{{ $web_source }}/css/bootstrap.css" rel="stylesheet" /> --}}
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
-  crossorigin="anonymous">
+  <link href="{{ $web_source }}/css/bootstrap.css" rel="stylesheet" />
   <link href="{{ $web_source }}/css/bootstrap-responsive.css" rel="stylesheet" />
   <link href="{{ $web_source }}/css/fancybox/jquery.fancybox.css" rel="stylesheet">
   <link href="{{ $web_source }}/css/jcarousel.css" rel="stylesheet" />
@@ -303,7 +300,6 @@
 
 @yield('content')
     
-    
     <section id="bottom">
       <div class="container">
         <div class="row">
@@ -318,6 +314,7 @@
         </div>
       </div>
     </section>
+    
     @if ($withFooter ?? true)
       <footer>
         <div class="container">

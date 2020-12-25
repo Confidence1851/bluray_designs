@@ -35,6 +35,7 @@
                             <th>Business Name</th>
                             <th>Status</th>
                             <th>Votes</th>
+                            <th>Reward</th>
                             <th colspan="3">Action</th>
                           </tr>
                         </thead>
@@ -52,6 +53,7 @@
                                 </a>
                             </td>
                             <td class="align-middle">{{$brand->votes}}</td>
+                            <td class="align-middle">{{$brand->getReward()}}</td>
                             <td class="align-middle"><a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#info_modal-{{$brand->id}}" >View</a></td>
                             <td class="align-middle"><a href="" class="btn btn-success btn-sm" data-toggle="modal" data-target="#reward_modal-{{$brand->id}}" >Reward</a></td>
                             <td class="align-middle"><a href="" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#delete_modal-{{$brand->id}}" >Delete</a></td>

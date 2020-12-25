@@ -95,12 +95,30 @@
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">View {{$brand->business_name}}`s Detais</h5>
+                <h5 class="modal-title">Reward {{$brand->business_name}}</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">
                 <div class="row">
-                   
+                    <form action="{{ route("admin.brands.update",$brand->id) }}" method="post">{{csrf_field()}} @method("put")
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Reward Position</label>
+                            <select class="form-control" type="text" name="reward" required>
+                                <option disabled selected>Select One</option>
+                                <option value="0" {{$brand->reward == 0 ? 'selected' : '' }} >None</option>
+                                <option value="1" {{$brand->reward == 1 ? 'selected' : '' }} >1st Place</option>
+                                <option value="2" {{$brand->reward == 2 ? 'selected' : '' }} >2nd Place</option>
+                                {{-- <option value="3" {{$brand->reward == 3 ? 'selected' : '' }} >3rd Place</option> --}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                             
+                            <div>
+                                <span class="fr"><button type="submit" class="btn btn-primary">Save</button></span>
+                            </div>
+                        </div>
+                        </form>
                     </div>
                     
                 </div>
@@ -115,19 +133,19 @@
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">View {{$brand->business_name}}`s Detais</h5>
+                <h5 class="modal-title">Delete {{$brand->business_name}}`s Data</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                   <div class="col-md-6">
-                       <p>
-                           <b>Business Name :</b>
-                           {{ $brand->business_name }}
-                       </p>
-                   </div>
-                    </div>
-                    
+                <form action="{{ route("admin.brands.destroy",$brand->id) }}" method="post">{{csrf_field()}} @method("delete")
+                    <div class="col-md-12">
+                        <p>Are you sure you want to delete this brand and all it`s related information?</p>
+                        <div class="form-group">
+                            <div>
+                                <span class="fr"><button type="submit" class="btn btn-danger">Delete</button></span>
+                            </div>
+                        </div>
+                        </form>
                 </div>
             </div>
         </div>

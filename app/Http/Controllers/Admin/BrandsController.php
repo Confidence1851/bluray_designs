@@ -15,8 +15,8 @@ class BrandsController extends Controller
      */
     public function index()
     {
-        $brands = Brand::orderby("id" , "desc")->paginate(10);
-        return view("admin.brands.index" , compact("brands"));
+        $brands = Brand::orderby("id", "desc")->paginate(10);
+        return view("admin.brands.index", compact("brands"));
     }
 
     /**
@@ -72,17 +72,26 @@ class BrandsController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            "status" => "required|string",
+            "reward" => "nullable|string",
+            "status" => "nullable|string",
             "message" => "nullable|string",
         ]);
 
-        if(!empty($msg = $data["message"])){
+        if (!empty($msg = $data["message"] ?? null)) {
             // Send messae
             dd($msg);
         }
 
-        Brand::findorfail($id)->update(["status" => $data["status"]]);
-        return back()->with('msg','Brand updated successfully');
+        $brand = Brand::findorfail($id);
+
+        if (!is_null($val = $data["reward"] ?? null)) {
+            $brand->update(["reward" => $val]);
+        }
+
+        if (!empty($val = $data["status"] ?? null)) {
+            $brand->update(["status" => $val]);
+        }
+        return back()->with('msg', 'Brand updated successfully');
     }
 
     /**
@@ -94,6 +103,6 @@ class BrandsController extends Controller
     public function destroy($id)
     {
         Brand::findorfail($id)->delete();
-        return back()->with('msg','Brand deleted successfully');
+        return back()->with('msg', 'Brand deleted successfully');
     }
 }

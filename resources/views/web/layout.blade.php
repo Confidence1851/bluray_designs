@@ -9,6 +9,13 @@
   <meta name="author" content="" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ $web_source }}/ico/apple-touch-icon-144-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ $web_source }}/ico/apple-touch-icon-114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ $web_source }}/ico/apple-touch-icon-72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="{{ $web_source }}/ico/apple-touch-icon-57-precomposed.png" />
+  <link rel="shortcut icon" href="{{ $web_source }}/ico/favicon.png" />
+
+  @if ($withStyles ?? true)
   <!-- css -->
   <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700" rel="stylesheet">
   <link href="{{ $web_source }}/css/bootstrap.css" rel="stylesheet" />
@@ -20,19 +27,7 @@
   <link href="{{ $web_source }}/css/style.css" rel="stylesheet" />
   <!-- Theme skin -->
   <link href="{{ $web_source }}/skins/default.css" rel="stylesheet" />
-  <!-- Fav and touch icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ $web_source }}/ico/apple-touch-icon-144-precomposed.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ $web_source }}/ico/apple-touch-icon-114-precomposed.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ $web_source }}/ico/apple-touch-icon-72-precomposed.png" />
-  <link rel="apple-touch-icon-precomposed" href="{{ $web_source }}/ico/apple-touch-icon-57-precomposed.png" />
-  <link rel="shortcut icon" href="{{ $web_source }}/ico/favicon.png" />
-
-  <!-- =======================================================
-    Theme Name: Flattern
-    Theme URL: https://bootstrapmade.com/flattern-multipurpose-bootstrap-template/
-    Author: BootstrapMade.com
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
+ @endif
   <style>
     .form-control{
       width: 100%;
@@ -51,6 +46,9 @@
 
 <body>
 
+   @if ($withHeader ?? true)
+
+   
   <div id="wrapper">
     <!-- toggle top area -->
     <div class="hidden-top">
@@ -67,7 +65,7 @@
       </div>
     </div>
     <!-- end toggle top area -->
-   @if ($withHeader ?? true)
+    
         <!-- start header -->
     <header>
       <div class="container ">
@@ -414,9 +412,9 @@
           </div>
         </div>
       </footer>
-    @endif
-  </div>
   <a href="#" class="scrollup"><i class="icon-chevron-up icon-square icon-32 active"></i></a>
+  @endif
+  </div>
   
   <!-- javascript
     ================================================== -->
@@ -478,6 +476,6 @@
   <!-- Template Custom JavaScript File -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <script src="{{ $web_source }}/js/custom.js"></script>
-
+@yield('script')
 </body>
 </html>

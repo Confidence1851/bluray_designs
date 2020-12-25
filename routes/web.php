@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/brand-for-free','BrandForFreeController@index')->name("brand_4_free");
 Route::get('/brand','BrandForFreeController@brand');
 Route::get('/printoption', 'BrandForFreeController@printoption');
-Route::get('/brand-for-free/get-started', 'BrandForFreeController@get_started')->name("get_started");
+Route::match(["get" , "post"] , '/brand-for-free/get-started', 'BrandForFreeController@get_started')->name("get_started");
 
 
 

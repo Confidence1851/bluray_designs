@@ -13,10 +13,21 @@ class BrandsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $brands = Brand::orderby("id", "desc")->paginate(10);
-        return view("admin.brands.index", compact("brands"));
+        $keyword = $request->keyword ?? '';
+        $fromDate = $request->fromDate ?? carbon()->startOfMonth();
+        $toDate = $request->toDate ?? carbon()->endOfMonth();
+        $builder = Brand::orderby("id", "desc");
+        if(!empty($keyword)){
+            $builder = $builder->where("name" , "like" , "%$keyword%")
+                ->orWhere("business_name" , "like" , "%$keyword%")
+                ->orWhere("email" , "like" , "%$keyword%");
+        }
+        $brands = $builder->whereBetween("created_at" , [$fromDate , $toDate])->paginate(10);
+        $fromDate = date("Y-m-d" , strtotime($fromDate));
+        $toDate = date("Y-m-d" , strtotime($toDate));
+        return view("admin.brands.index", compact("brands" , "keyword", "fromDate" , "toDate"));
     }
 
     /**

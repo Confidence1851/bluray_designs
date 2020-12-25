@@ -25,7 +25,28 @@
 								{{ Session::get('error') }}
 							</div>
 						@endif
-					</div>
+                    </div>
+                    <div class="mb-2">
+                       <form action="{{ route("admin.brands.index") }}" method="get">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <br>
+                                <input type="text" value="{{ $keyword ?? '' }}"  name="keyword" placeholder="Search for business , name or email" class="form-control mt-2">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="">From Date</label>
+                                <input type="date" value="{{ $fromDate ?? '' }}" name="fromDate" class="form-control">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="">To Date</label>
+                                <input type="date" value="{{ $toDate ?? '' }}"  name="toDate" class="form-control">
+                            </div>
+                            <div class="form-group col-md-2 ">
+                                <br>
+                                <button class="btn btn-success btn-block mt-2">Filter</button>
+                            </div>
+                        </div></form>
+                    </div>
                     <div class="table-responsive">
                       <table class="table table-striped" id="table-1">
                         <thead>

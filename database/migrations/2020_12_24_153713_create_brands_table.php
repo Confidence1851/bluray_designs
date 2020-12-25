@@ -24,6 +24,9 @@ class CreateBrandsTable extends Migration
             $table->text('about')->nullable();
             $table->text('summary')->nullable();
             $table->string('image')->nullable();
+            $table->tinyInteger('status')->default(0);
+            $table->bigInteger('votes')->default(0);
+            $table->tinyInteger('isWinner')->default(0);
             $table->timestamps();
         });
     }

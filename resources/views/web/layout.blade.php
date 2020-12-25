@@ -65,7 +65,7 @@
       </div>
     </div>
     <!-- end toggle top area -->
-    
+
         <!-- start header -->
     <header>
       <div class="container ">
@@ -415,6 +415,9 @@
   <a href="#" class="scrollup"><i class="icon-chevron-up icon-square icon-32 active"></i></a>
   @endif
   </div>
+
+  @if ($withJavascript ?? true)
+
   
   <!-- javascript
     ================================================== -->
@@ -472,10 +475,11 @@
 			  ).init();
               </script>
   
+  <script src="{{ $web_source }}/js/custom.js"></script>
 
+  @endif
   <!-- Template Custom JavaScript File -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
-  <script src="{{ $web_source }}/js/custom.js"></script>
 @yield('script')
 </body>
 </html>

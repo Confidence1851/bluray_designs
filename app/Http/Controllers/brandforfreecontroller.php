@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Brand;
-use App\Helpers\Constants;
+use App\Traits\Constants;
 use Illuminate\Http\Request;
 
 class BrandForFreeController extends Controller
@@ -35,11 +35,14 @@ class BrandForFreeController extends Controller
         ]);
 
         if (!empty($image = $request->file("image"))) {
-            $data["image"] = putFileInPrivateStorage($image, $this->brandImagesPath);
+            $data["image"] = resizeImageandSave($image , $this->brandImagesPath , 'local' , 640 , 360);
         }
 
         $data["user_id"] = 1;
         Brand::create($data);
-        return back()->with("success_msg", "Application submitted successfully!");
+        return back()->with("application_success", "Application submitted successfully!");
     }
+
+
+    // Admin side
 }

@@ -5,7 +5,6 @@ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLP
 crossorigin="anonymous">
 @endsection
 @section('content')
-    <body background="img/people-mover.jpg" style="">
         <div class="container" style="padding-top:3%;">
         <!--welcome to bluraydesign brand4free initiative -->
         <div class="row">
@@ -38,7 +37,8 @@ crossorigin="anonymous">
         <p>Will you like to participate? create an account and login to get started...</p>
 
         <p>
-        <a href="{{ route("get_started") }}" class="btn btn-primary"> Get Started</a>
+        <a href="{{ route("brand_4_free.get_started") }}" class="btn btn-primary"> Get Started</a>
+        <a href="{{ route("brand_4_free.contestants") }}" class="btn btn-success"> View Contestants</a>
         </p>
         </div>
 

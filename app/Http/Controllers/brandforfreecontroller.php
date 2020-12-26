@@ -35,7 +35,7 @@ class BrandForFreeController extends Controller
         ]);
 
         if (!empty($image = $request->file("image"))) {
-            $data["image"] = resizeImageandSave($image , $this->brandImagesPath , 'local' , 640 , 360);
+            $data["image"] = resizeImageandSave($image, $this->brandImagesPath, 'local', 640, 360);
         }
 
         $data["user_id"] = 1;
@@ -44,5 +44,32 @@ class BrandForFreeController extends Controller
     }
 
 
-    // Admin side
+    public function contestants()
+    {
+        $fromDate = carbon()->startOfMonth();
+        $toDate = carbon()->endOfMonth();
+        $month = date("F Y", strtotime($fromDate));
+        $brands = Brand::where("status", $this->activeStatus)
+            ->whereBetween("created_at", [$fromDate, $toDate])
+            ->inRandomOrder()
+            ->get();
+        return view("web.brand4free.contestants", compact("month", "brands"));
+    }
+
+    public function vote(Request $request)
+    {
+        $id = $request->brand_id;
+        $brand = Brand::findorfail($id);
+        $cookieKey = $this->myVotedBrandsCookieKey;
+        $oldcookie = $request->cookie($cookieKey);
+        $votedBrands = !empty($oldcookie) ? unserialize($oldcookie) : [];
+        if (!in_array($id, $votedBrands)) {
+            // dd($oldcookie);
+            array_push($votedBrands, $id);
+            return back()->with("success_msg", "Vote submitted successfully!")->withCookie(cookie()->cook($cookieKey, serialize($votedBrands)));
+        } else {
+            // Voted before
+            return back()->with("error_msg", "You already voted for this brand!");
+        }
+    }
 }

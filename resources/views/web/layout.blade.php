@@ -255,7 +255,7 @@
                      
                     <li><a href="{{ route('about_us') }}">ABOUT US </a></li>
 
-                    <li><a href="{{ route("brand_4_free") }}">BRAND 4 FREE </a></li>
+                    <li><a href="{{ route("brand_4_free.index") }}">BRAND 4 FREE </a></li>
                      
                     <li class="dropdown" style="display:none">
                       <a href="#">Portfolio <i class="icon-angle-down"></i></a>

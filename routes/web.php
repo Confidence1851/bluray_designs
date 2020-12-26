@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/brand-for-free', 'BrandForFreeController@index')->name("brand_4_free");
-Route::get('/brand', 'BrandForFreeController@brand');
-Route::get('/printoption', 'BrandForFreeController@printoption');
-Route::match(["get", "post"], '/brand-for-free/get-started', 'BrandForFreeController@get_started')->name("get_started");
+Route::as("brand_4_free.")->prefix("brand-for-free")->group(function () {
+    Route::get('/', 'BrandForFreeController@index')->name("index");
+    Route::get('/contestants', 'BrandForFreeController@contestants')->name("contestants");
+    Route::post('/vote', 'BrandForFreeController@vote')->name("vote");
+    Route::get('/printoption', 'BrandForFreeController@printoption');
+    Route::match(["get", "post"], '/brand-for-free/get-started', 'BrandForFreeController@get_started')->name("get_started");
+});
 
 Route::get('/file/{path}', 'WebController@read_file')->name('read_file');
 
@@ -82,10 +85,9 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/save-post', 'HomeController@savepost')->name('savepost');
     Route::get('/edit-post/{id}', 'HomeController@editpost')->name('editpost');
     Route::get('/users', 'HomeController@users')->name('users');
-
 });
 
 
-Route::namespace("Admin")->as("admin.")->prefix("admin")->middleware("admin")->group( function () {
+Route::namespace("Admin")->as("admin.")->prefix("admin")->middleware("admin")->group(function () {
     Route::resource('brands', 'BrandsController');
 });

@@ -50,7 +50,7 @@ crossorigin="anonymous">
     <div class="col-md-6 col-sm-12 col-lg-6 push-right" style="text-align:justify; padding:1%; margin-left:3%; border:#CCC; border-style:solid; border-width:1px 1px 1px 1px; border-bottom-left-radius:10px; border-bottom-right-radius:10px; border-top-left-radius:10px; border-top-right-radius:10px;">
     <style></style>
 
-    <form method="post" action="{{ route("contestants.get_started") }}" class="was-validated" enctype="multipart/form-data">@csrf
+    <form method="post" action="{{ route("brand_4_free.get_started") }}" class="was-validated" enctype="multipart/form-data">@csrf
       <div class="form-group">
         <label for="email"><strong>* Full Name:</strong></label>
         <input type="text" name="name" class="form-control" placeholder="Enter Full Name" id="username" required>

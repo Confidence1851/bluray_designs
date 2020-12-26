@@ -35,7 +35,7 @@ class BrandForFreeController extends Controller
         ]);
 
         if (!empty($image = $request->file("image"))) {
-            $data["image"] = resizeImageandSave($image, $this->brandImagesPath, 'local', 640, 360);
+            $data["image"] = resizeImageandSave($image, $this->brandImagesPath, 'local', 1080, 1080);
         }
 
         $data["user_id"] = 1;
@@ -46,6 +46,7 @@ class BrandForFreeController extends Controller
 
     public function contestants()
     {
+        $cookieKey = $this->myVotedBrandsCookieKey;
         $fromDate = carbon()->startOfMonth();
         $toDate = carbon()->endOfMonth();
         $month = date("F Y", strtotime($fromDate));
@@ -53,7 +54,9 @@ class BrandForFreeController extends Controller
             ->whereBetween("created_at", [$fromDate, $toDate])
             ->inRandomOrder()
             ->get();
-        return view("web.brand4free.contestants", compact("month", "brands"));
+        $topVoted = $brands->sortBy(["votes" , "desc"])->take(2);
+        $votedBrands =  session()->has($cookieKey) ? unserialize(session()->get($cookieKey)) : [];
+        return view("web.brand4free.contestants", compact("month", "brands", "votedBrands" , "topVoted"));
     }
 
     public function vote(Request $request)
@@ -61,12 +64,14 @@ class BrandForFreeController extends Controller
         $id = $request->brand_id;
         $brand = Brand::findorfail($id);
         $cookieKey = $this->myVotedBrandsCookieKey;
-        $oldcookie = $request->cookie($cookieKey);
-        $votedBrands = !empty($oldcookie) ? unserialize($oldcookie) : [];
+        $votedBrands =  session()->has($cookieKey) ? unserialize(session()->get($cookieKey)) : [];
         if (!in_array($id, $votedBrands)) {
-            // dd($oldcookie);
+            config(['session.lifetime' => 100 * 100]);
             array_push($votedBrands, $id);
-            return back()->with("success_msg", "Vote submitted successfully!")->withCookie(cookie()->cook($cookieKey, serialize($votedBrands)));
+            session()->put($cookieKey, serialize($votedBrands));
+            $brand->votes += 1;
+            $brand->save();
+            return back()->with("success_msg", "Vote submitted successfully!");
         } else {
             // Voted before
             return back()->with("error_msg", "You already voted for this brand!");

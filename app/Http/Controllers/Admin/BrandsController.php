@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\AppSetting;
 use App\Brand;
+use App\BrandRewardDesign;
 use App\Http\Controllers\Controller;
 use App\Traits\Constants;
 use Illuminate\Http\Request;
@@ -141,6 +142,14 @@ class BrandsController extends Controller
 
         globalSettings()->update($data);
         return back()->with('success', 'Brand settings successfully');
+    }
+
+    public function downloadDesign(Request $request)
+    {
+        $id = $request->id;
+        $brandReward = BrandRewardDesign::findorfail($id);
+        $path = $brandReward->getDesignPath();
+        return downloadFileFromPrivateStorage($path , optional($brandReward->brand)->business_name);
     }
 
 }

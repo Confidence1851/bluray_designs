@@ -95,7 +95,7 @@ class BrandForFreeController extends Controller
             "selected_product" => "required|string",
             "full_name" => "required|string",
             "details" => "required|string",
-            "design" => "nullable|".imageMimes().'/'.docMimes(),
+            "design" => "nullable|mimetypes:".imageMimes().'/'.docMimes(),
         ]);
 
         $check = BrandRewardDesign::where("brand_id" , $data["brand_id"])->count();

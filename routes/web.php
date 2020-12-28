@@ -21,7 +21,7 @@ Route::as("brand_4_free.")->prefix("brand-for-free")->group(function () {
     Route::match(["get", "post"], '/get-started', 'BrandForFreeController@get_started')->name("get_started");
 });
 
-Route::get('/file/{path}', 'WebController@read_file')->name('read_file');
+Route::get('/file/{path}/{download?}', 'WebController@read_file')->name('read_file');
 
 
 
@@ -91,4 +91,5 @@ Route::group(['middleware' => ['admin']], function () {
 Route::namespace("Admin")->as("admin.")->prefix("admin")->middleware("admin")->group(function () {
     Route::resource('brands', 'BrandsController');
     Route::post('/brands/settings', 'BrandsController@settings')->name("brands.settings");
+    Route::post('/brands/design/download', 'BrandsController@downloadDesign')->name("brands.download.design");
 });

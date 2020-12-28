@@ -93,7 +93,58 @@
             </div>
         </div>
     </div>
-    </div>
+
+    @if (!empty($brand->brandReward))
+        @php
+        $reward = optional($brand->brandReward);
+        @endphp
+        <!--Info Modal -->
+        <div class="modal fade bd-example-modal-md" id="design_modal-{{ $brand->id }}">
+            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">View {{ $brand->business_name }}`s Design Request</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <p>
+                                    <b>Selected Product :</b>
+                                    {{ rewardProducts($reward->selected_product) }}
+                                </p>
+                                <p>
+                                    <b>Request Full Name :</b>
+                                    {{ $reward->full_name }}
+                                </p>
+                                <p>
+                                    <b>Request Details :</b>
+                                    {{ $reward->details }}
+                                </p>
+                                <p>
+                                    @if (!empty($reward->design))
+                                        <form action="{{ route('admin.brands.download.design') }}" method="post">@csrf
+                                            <input type="hidden" name="id" value="{{ $reward->id }}">
+                                            <b>Design :</b>
+
+                                            <button class="btn btn-success">
+                                                Download
+                                            </button>
+                                        </form>
+
+                                    @endif
+
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
 
     <!--Info Modal -->
     <div class="modal fade bd-example-modal-md" id="reward_modal-{{ $brand->id }}">

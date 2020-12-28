@@ -78,7 +78,7 @@
                                             <td class="align-middle">
                                                 <a href=""
                                                     class="btn btn-sm text-white 
-                                    {{ $brand->status == $activeStatus ? 'bg-success' : ($brand->status == $inactiveStatus ? 'bg-danger' : ' btn-info') }}"
+                                        {{ $brand->status == $activeStatus ? 'bg-success' : ($brand->status == $inactiveStatus ? 'bg-danger' : ' btn-info') }}"
                                                     data-toggle="modal" data-target="#status_modal-{{ $brand->id }}">
                                                     {{ $brand->getStatus() }}
                                                 </a>
@@ -88,9 +88,15 @@
                                             <td class="align-middle"><a href="" class="btn btn-info btn-sm"
                                                     data-toggle="modal" data-target="#info_modal-{{ $brand->id }}">View</a>
                                             </td>
-                                            <td class="align-middle"><a href="" class="btn btn-success btn-sm"
-                                                    data-toggle="modal"
-                                                    data-target="#reward_modal-{{ $brand->id }}">Reward</a></td>
+                                            @if ($brand->status == $activeStatus)
+                                                <td class="align-middle"><a href="" class="btn btn-success btn-sm"
+                                                        data-toggle="modal"
+                                                        data-target="#reward_modal-{{ $brand->id }}">Reward</a></td>
+                                                <td class="align-middle"><a href="" class="btn btn-primary btn-sm "
+                                                        data-toggle="modal" 
+                                                        data-target="#design_modal-{{ $brand->id }}">Design</a></td>
+                                            @endif
+
                                             <td class="align-middle"><a href="" class="btn btn-warning btn-sm"
                                                     data-toggle="modal"
                                                     data-target="#delete_modal-{{ $brand->id }}">Delete</a></td>
@@ -150,7 +156,8 @@
                         </div>
 
                         <div class="form-group">
-                            <p style="color: red">If this is set as inactive, both the vote start and end dates would be cleared!</p>
+                            <p style="color: red">If this is set as inactive, both the vote start and end dates would be
+                                cleared!</p>
                             <div>
                                 <span class="fr"><button type="submit" class="btn btn-primary">Save</button></span>
                             </div>

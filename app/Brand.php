@@ -30,4 +30,8 @@ class Brand extends Model
     public function getImage(){
         return route("read_file" , encrypt("$this->brandImagesPath/$this->image"));
     }
+
+    public function brandReward(){
+        return $this->hasOne(BrandRewardDesign::class , "brand_id" , );
+    }
 }

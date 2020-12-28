@@ -109,13 +109,13 @@ function deleteFileFromPrivateStorage($path){
 
 
 /**Downloads file from private storage */
-function downloadFileFromPrivateStorage($path , $name){
-    $name = $name ?? env('APP_NAME');
+function downloadFileFromPrivateStorage($path , $name = null){
     $exists = Storage::disk('local')->exists($path);
     if($exists){
+        $file_name = "file".uniqid();
         $type = Storage::mimeType($path);
         $ext = explode('.',$path)[1];
-        $display_name = $name.'.'.$ext;
+        $display_name = empty($name) ? $file_name : $name.'.'.$ext;
         // dd($display_name);
         $headers = [
             'Content-Type' => $type,
@@ -268,5 +268,8 @@ function getFileType(String $type)
            "product_stickers_100" => "100 copies of Product Stickers",
            "flex_banner_1" => "1 3x5ft Flex Banner"
        ];
+       if(!empty($key)){
+         return array_key_exists($key , $products) ? $products[$key] : null ;
+       }
        return $products;
    }

@@ -92,4 +92,5 @@ Route::namespace("Admin")->as("admin.")->prefix("admin")->middleware("admin")->g
     Route::resource('brands', 'BrandsController');
     Route::post('/brands/settings', 'BrandsController@settings')->name("brands.settings");
     Route::post('/brands/design/download', 'BrandsController@downloadDesign')->name("brands.download.design");
+    Route::post('/brands/design/complete', 'BrandsController@designComplete')->name("brands.design.complete");
 });

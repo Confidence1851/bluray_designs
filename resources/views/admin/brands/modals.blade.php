@@ -120,7 +120,7 @@
                                 </p>
                                 <p>
                                     <b>Request Details :</b>
-                                    {{ $reward->details }}
+                                    {!! $reward->details !!}
                                 </p>
                                 <p>
                                     @if (!empty($reward->design))
@@ -128,7 +128,7 @@
                                             <input type="hidden" name="id" value="{{ $reward->id }}">
                                             <b>Design :</b>
 
-                                            <button class="btn btn-success">
+                                            <button class="btn btn-info btn-sm">
                                                 Download
                                             </button>
                                         </form>
@@ -136,6 +136,20 @@
                                     @endif
 
                                 </p>
+                                @if ($reward->status != $activeStatus)
+                                <div class="mt-5">
+                                    <form action="{{ route('admin.brands.design.complete') }}" method="post">@csrf
+                                        <input type="hidden" name="id" value="{{ $reward->id }}">
+                                        <button class="btn btn-warning btn-block">
+                                            Mark as done
+                                        </button>
+                                    </form>
+                                </div>
+                                @else
+                                <button class="btn btn-success btn-block mt-5">
+                                    Marked as Completed
+                                </button>
+                                @endif
                             </div>
                         </div>
 

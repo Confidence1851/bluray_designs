@@ -152,4 +152,11 @@ class BrandsController extends Controller
         return downloadFileFromPrivateStorage($path , optional($brandReward->brand)->business_name);
     }
 
+    public function designComplete(Request $request)
+    {
+        $id = $request->id;
+        BrandRewardDesign::findorfail($id)->update(["status" => $this->activeStatus]);
+        return back()->with('success', 'Brand reward design updated successfully');
+    }
+
 }

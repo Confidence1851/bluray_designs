@@ -17,8 +17,8 @@ Route::as("brand_4_free.")->prefix("brand-for-free")->group(function () {
     Route::get('/', 'BrandForFreeController@index')->name("index");
     Route::get('/contestants', 'BrandForFreeController@contestants')->name("contestants");
     Route::post('/vote', 'BrandForFreeController@vote')->name("vote");
-    Route::get('/printoption', 'BrandForFreeController@printoption');
-    Route::match(["get", "post"], '/brand-for-free/get-started', 'BrandForFreeController@get_started')->name("get_started");
+    Route::match(["get", "post"] , '/design-option', 'BrandForFreeController@designOption')->name("design_option");
+    Route::match(["get", "post"], '/get-started', 'BrandForFreeController@get_started')->name("get_started");
 });
 
 Route::get('/file/{path}', 'WebController@read_file')->name('read_file');
@@ -90,4 +90,5 @@ Route::group(['middleware' => ['admin']], function () {
 
 Route::namespace("Admin")->as("admin.")->prefix("admin")->middleware("admin")->group(function () {
     Route::resource('brands', 'BrandsController');
+    Route::post('/brands/settings', 'BrandsController@settings')->name("brands.settings");
 });

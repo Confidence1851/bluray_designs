@@ -25,7 +25,7 @@ class Brand extends Model
         return $reward ?? "None";
     }
 
-    protected $guarded =[];
+    protected $guarded = [];
 
     public function getImage(){
         return route("read_file" , encrypt("$this->brandImagesPath/$this->image"));

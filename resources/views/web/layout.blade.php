@@ -480,6 +480,7 @@
   @endif
   <!-- Template Custom JavaScript File -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
+  
 @yield('script')
 </body>
 </html>

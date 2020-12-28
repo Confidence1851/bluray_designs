@@ -24,13 +24,19 @@ crossorigin="anonymous">
         <div class="col-md-12">
         <blockquote style="border:#09F; text-align:center; border-style:solid; border-width:1px 1px 1px 1px; padding:1%;">
           <strong style="color:#09F">Currently Leading:</strong> 
-          @foreach ($topVoted as $key=> $brand)
+          @php
+              $key = 0;
+          @endphp
+          @foreach ($topVoted as $brand)
           @if ($key > 0)
             &amp; 
           @endif
               {{ $brand->business_name }} ({{ $brand->votes }} votes)
+              @php
+                  $key +=1;
+              @endphp
           @endforeach
-          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <strong style="color:#09F">Voting Ends:</strong> Tuesday 13 January, 2021 </blockquote></div>
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <strong style="color:#09F">Voting Ends:</strong> {{ $voteEndDate ?? '' }} </blockquote></div>
         </div>
 
 

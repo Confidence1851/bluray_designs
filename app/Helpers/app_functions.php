@@ -1,5 +1,6 @@
 <?php
 
+use App\AppSetting;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -256,4 +257,16 @@ function getFileType(String $type)
     }
 
 
-   
+   function globalSettings(){
+       return AppSetting::firstOrCreate([]);
+   }
+
+   function rewardProducts($key = null){
+       $products = [
+           "flyers_100" => "100 copies of Flyers",
+           "business_card_100" => "100 copies of Business Card",
+           "product_stickers_100" => "100 copies of Product Stickers",
+           "flex_banner_1" => "1 3x5ft Flex Banner"
+       ];
+       return $products;
+   }

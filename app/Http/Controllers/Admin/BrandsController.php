@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\AppSetting;
 use App\Brand;
 use App\Http\Controllers\Controller;
+use App\Traits\Constants;
 use Illuminate\Http\Request;
 
 class BrandsController extends Controller
 {
+    use Constants;
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +30,8 @@ class BrandsController extends Controller
         $brands = $builder->whereBetween("created_at" , [$fromDate , $toDate])->paginate(10);
         $fromDate = date("Y-m-d" , strtotime($fromDate));
         $toDate = date("Y-m-d" , strtotime($toDate));
-        return view("admin.brands.index", compact("brands" , "keyword", "fromDate" , "toDate"));
+        $settings = globalSettings();
+        return view("admin.brands.index", compact("brands" , "keyword", "fromDate" , "toDate" , "settings"));
     }
 
     /**
@@ -102,7 +106,7 @@ class BrandsController extends Controller
         if (!empty($val = $data["status"] ?? null)) {
             $brand->update(["status" => $val]);
         }
-        return back()->with('msg', 'Brand updated successfully');
+        return back()->with('success', 'Brand updated successfully');
     }
 
     /**
@@ -114,6 +118,29 @@ class BrandsController extends Controller
     public function destroy($id)
     {
         Brand::findorfail($id)->delete();
-        return back()->with('msg', 'Brand deleted successfully');
+        return back()->with('success', 'Brand deleted successfully');
     }
+
+    
+    public function settings(Request $request)
+    {
+        $data = $request->validate([
+            "brands_intiative_status" => "required|string",
+            "vote_starts" => "nullable|string",
+            "vote_ends" => "nullable|string",
+        ]);
+
+        if($data["brands_intiative_status"] != $this->activeStatus){
+            $data["vote_starts"] = null;
+            $data["vote_ends"] = null;
+        }
+
+        if($data["vote_starts"] > $data["vote_ends"]){
+            return back()->with('error', 'Start date cannot be greater than end date!');
+        }
+
+        globalSettings()->update($data);
+        return back()->with('success', 'Brand settings successfully');
+    }
+
 }

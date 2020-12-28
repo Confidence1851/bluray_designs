@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Brand;
+use App\BrandRewardDesign;
 use App\Traits\Constants;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class BrandForFreeController extends Controller
         ]);
 
         if (!empty($image = $request->file("image"))) {
-            $data["image"] = resizeImageandSave($image, $this->brandImagesPath, 'local', 1080, 1080);
+            $data["image"] = resizeImageandSave($image, $this->brandImagesPath, 'local', 1080, 920);
         }
 
         $data["user_id"] = 1;
@@ -54,9 +55,10 @@ class BrandForFreeController extends Controller
             ->whereBetween("created_at", [$fromDate, $toDate])
             ->inRandomOrder()
             ->get();
-        $topVoted = $brands->sortBy(["votes" , "desc"])->take(2);
+        $topVoted = $brands->sortByDesc(["votes"])->take(2);
         $votedBrands =  session()->has($cookieKey) ? unserialize(session()->get($cookieKey)) : [];
-        return view("web.brand4free.contestants", compact("month", "brands", "votedBrands" , "topVoted"));
+        $voteEndDate = !empty($date = globalSettings()->vote_ends) ? date("l d F, Y", strtotime($date)) : "Inactive";
+        return view("web.brand4free.contestants", compact("month", "brands", "votedBrands", "topVoted", "voteEndDate"));
     }
 
     public function vote(Request $request)
@@ -76,5 +78,35 @@ class BrandForFreeController extends Controller
             // Voted before
             return back()->with("error_msg", "You already voted for this brand!");
         }
+    }
+
+    public function designOption(Request $request)
+    {
+        $brand = Brand::findorfail($request->brand_id);
+        if(in_array($brand->reward , [0])){
+            abort(403 , "Access denied");
+        }
+        if ($request->getMethod() == "GET") {
+            $rewardProducts = rewardProducts();
+            return view("web.brand4free.design_option", compact("brand", "rewardProducts"));
+        }
+        $data = $request->validate([
+            "brand_id" => "required|string|exists:brands,id",
+            "selected_product" => "required|string",
+            "full_name" => "required|string",
+            "details" => "required|string",
+            "design" => "nullable|".imageMimes().'/'.docMimes(),
+        ]);
+
+        $check = BrandRewardDesign::where("brand_id" , $data["brand_id"])->count();
+        if($check > 0){
+            return back()->with("error_msg", "A request has already been submitted for this brand!");
+        }
+
+        if(!empty($design = $request->file("design"))){
+            $data["design"] = putFileInPrivateStorage($design , $this->brandRewardDesignsPath);
+        }
+        BrandRewardDesign::create($data);
+        return back()->with("success_msg", "Request submitted successfully!");
     }
 }

@@ -3,7 +3,8 @@
 namespace App\Traits;
 
 trait Constants{
-    public $brandImagesPath = "images/brands";
+    public $brandImagesPath = "brands/images";
+    public $brandRewardDesignsPath = "brands/reward/designs";
     public $myVotedBrandsCookieKey = "myVotedBrandsCookieKey";
 
     

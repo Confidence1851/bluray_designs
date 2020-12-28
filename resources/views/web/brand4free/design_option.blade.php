@@ -17,19 +17,19 @@ false])
                     outside Lagos depending on distance and location
 
                 </p>
-                
-                
+
+
             </div>
         </div>
-       
+
         <form action="{{ route('brand_4_free.design_option') }}" method="post" enctype="multipart/form-data">@csrf
             <input type="hidden" value="{{ $brand->id }}" name="brand_id" required>
             <div class="row">
                 <div class="col-12 col-sm-10 col-md-8 offset-2 jumbotron" style="margin-top:1%;">
-                  <div class="">
-                    @include("web.fragments.flash_message")
-        
-                        </div>
+                    <div class="">
+                        @include("web.fragments.flash_message")
+
+                    </div>
                     <div class="form-group">
                         <label for="registered"><strong>Select Product:</strong></label>
                         <select class="form-control" placeholder="" name="selected_product" required id="registered">

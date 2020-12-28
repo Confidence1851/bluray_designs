@@ -17,13 +17,11 @@ Route::as("brand_4_free.")->prefix("brand-for-free")->group(function () {
     Route::get('/', 'BrandForFreeController@index')->name("index");
     Route::get('/contestants', 'BrandForFreeController@contestants')->name("contestants");
     Route::post('/vote', 'BrandForFreeController@vote')->name("vote");
-    Route::match(["get", "post"] , '/design-option', 'BrandForFreeController@designOption')->name("design_option");
+    Route::match(["get", "post"], '/design-option', 'BrandForFreeController@designOption')->name("design_option");
     Route::match(["get", "post"], '/get-started', 'BrandForFreeController@get_started')->name("get_started");
 });
 
 Route::get('/file/{path}/{download?}', 'WebController@read_file')->name('read_file');
-
-
 
 Route::get('/', 'WebController@index')->name('index');
 Route::get('/blog', 'WebController@blog')->name('blog');

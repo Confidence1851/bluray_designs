@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -12,11 +13,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/brand-for-free','BrandForFreeController@index')->name("brand_4_free");
-Route::get('/brand','BrandForFreeController@brand');
-Route::get('/printoption', 'BrandForFreeController@printoption');
-Route::get('/brand-for-free/get-started', 'BrandForFreeController@get_started')->name("get_started");
+Route::as("brand_4_free.")->prefix("brand-for-free")->group(function () {
+    Route::get('/', 'BrandForFreeController@index')->name("index");
+    Route::get('/contestants', 'BrandForFreeController@contestants')->name("contestants");
+    Route::post('/vote', 'BrandForFreeController@vote')->name("vote");
+    Route::match(["get", "post"] , '/design-option', 'BrandForFreeController@designOption')->name("design_option");
+    Route::match(["get", "post"], '/get-started', 'BrandForFreeController@get_started')->name("get_started");
+});
 
+Route::get('/file/{path}/{download?}', 'WebController@read_file')->name('read_file');
 
 
 
@@ -36,11 +41,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/place-order', 'OrderController@place_order')->name('place_order');
 
-Route::group(['middleware'=> ['admin']],function(){
+Route::group(['middleware' => ['admin']], function () {
 
     Route::get('/products', 'HomeController@products')->name('products');
     Route::post('/update-role/{id}', 'HomeController@updateRole')->name('updateRole');
-    Route::get('/new-product', 'HomeController@newproduct')->name('newproduct');//*
+    Route::get('/new-product', 'HomeController@newproduct')->name('newproduct'); //*
 
 
 
@@ -83,3 +88,9 @@ Route::group(['middleware'=> ['admin']],function(){
 });
 
 
+Route::namespace("Admin")->as("admin.")->prefix("admin")->middleware("admin")->group(function () {
+    Route::resource('brands', 'BrandsController');
+    Route::post('/brands/settings', 'BrandsController@settings')->name("brands.settings");
+    Route::post('/brands/design/download', 'BrandsController@downloadDesign')->name("brands.download.design");
+    Route::post('/brands/design/complete', 'BrandsController@designComplete')->name("brands.design.complete");
+});

@@ -17,6 +17,11 @@ use App\Mail\ContactMail;
 
 class WebController extends Controller
 {
+    public function read_file($path)
+    {
+        return getFileFromPrivateStorage(decrypt($path));
+    }
+    
     public function index()
     {
         $products = Product::where('status','Active')->orderby('created_at','desc')->limit(8)->get();

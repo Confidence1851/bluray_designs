@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Traits\Constants;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    use Constants;
     /**
      * Register any application services.
      *
@@ -30,7 +32,10 @@ class AppServiceProvider extends ServiceProvider
                 'favicon_img' => route('index').env('ASSET_URL').'/logo.png',
                 'public_source' => route('index').env('ASSET_URL'),
                 'web_source' => route('index').env('ASSET_URL').'/web',
-                'admin_source' => route('index').env('ASSET_URL').'/admin',
+                'admin_source' => route('index').env('ASSET_URL').'/dashboard',
+                'activeStatus' => $this->activeStatus,
+                'pendingStatus' => $this->pendingStatus,
+                'inactiveStatus' => $this->inactiveStatus,
             ]);
         });
 

@@ -219,7 +219,6 @@
     <script src="{{ $admin_source }}/js/plugins.js"></script>
     <script src="{{ $admin_source }}/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="{{ $admin_source }}/js/scripts.js"></script>
-    <script src="https://js.paystack.co/v1/inline.js"></script>
 
      <!-- Start datatable js -->
   <script src="{{ $admin_source }}/datatables/datatables.min.js"></script>

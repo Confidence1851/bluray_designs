@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-12 jumbotron">
                 <p style="padding-left:3%; margin-right:3%;"></p>
-                <center><img src="img/brand4free-logo.png" class=" img-fluid" alt="Brand4free logo"></center>
+                <center><img src="{{ my_asset("web/img/brand4free_logo.png") }}" class=" img-fluid" alt="Brand4free logo"></center>
                 <p></p><br>
                 <h4 style="text-align:center; color:#666; font-family: Century Gothic, Arial, Tahoma;">Vote for your
                     favourite brand to win this month's <strong>BRAND4FREE</strong> by Bluray DesignTech </h4>

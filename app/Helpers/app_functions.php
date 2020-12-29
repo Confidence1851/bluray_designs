@@ -81,7 +81,7 @@ function resizeImageandSave($image, $path, $disk = 'local', $width = 300, $heigh
 
 // Returns full public path
 function my_asset($path = null ){
-    return route('homepage').env('RESOURCE_PATH').'/'.$path;
+    return url('/').env('RESOURCE_PATH').'/'.$path;
 }
 
 

@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-12">
                 <p style="padding-left:3%; margin-bottom:4%; padding-right:3%;"></p>
-                <center><img src="img/brand4free-logo.png" class=" img-fluid" alt="Brand4free logo"></center>
+                <center><img src="{{ my_asset("web/img/brand4free_logo.png") }}" class=" img-fluid" alt="Brand4free logo"></center>
                 <p></p>
                 <h2 style="text-align:center; color:#666; font-family: Century Gothic, Arial, Tahoma; font-size:24px;">
                     WELCOME TO BLURAY DESIGNTECH'S<br> <span style="font-size:40px; color:#036;"> <b><i>BRAND4FREE</i></b>
@@ -22,7 +22,7 @@
         <div class="row" style="margin-top:5%; margin-bottom:10%; color:#666;:">
 
             <div class="col-md-6 col-sm-6 col-lg-6">
-                <img class="img-fluid" alt="The Entreprenuer" src="img/entre.png">
+                <img class="img-fluid" alt="The Entreprenuer" src="{{ my_asset("web/img/brand.png") }}">
             </div>
 
 

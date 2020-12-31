@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ContactMail extends Mailable
+class BrandListedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,11 +16,12 @@ class ContactMail extends Mailable
      *
      * @return void
      */
-    public $letter;
+
+    public $mail;
      
-    public function __construct($letter_data)
+    public function __construct($mail)
     {
-        $this->letter = $letter_data;
+        $this->mail = $mail;
     }
 
     /**
@@ -30,6 +31,6 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.contact_mail')->subject('New contact email');
+        return $this->markdown('emails.brand_listed')->subject($this->mail["subject"]);
     }
 }

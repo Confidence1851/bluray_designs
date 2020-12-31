@@ -6,8 +6,11 @@ use App\AppSetting;
 use App\Brand;
 use App\BrandRewardDesign;
 use App\Http\Controllers\Controller;
+use App\Mail\BrandListedMail;
+use App\Mail\BrandRewardMail;
 use App\Traits\Constants;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class BrandsController extends Controller
 {
@@ -23,16 +26,16 @@ class BrandsController extends Controller
         $fromDate = $request->fromDate ?? carbon()->startOfMonth();
         $toDate = $request->toDate ?? carbon()->endOfMonth();
         $builder = Brand::orderby("id", "desc");
-        if(!empty($keyword)){
-            $builder = $builder->where("name" , "like" , "%$keyword%")
-                ->orWhere("business_name" , "like" , "%$keyword%")
-                ->orWhere("email" , "like" , "%$keyword%");
+        if (!empty($keyword)) {
+            $builder = $builder->where("name", "like", "%$keyword%")
+                ->orWhere("business_name", "like", "%$keyword%")
+                ->orWhere("email", "like", "%$keyword%");
         }
-        $brands = $builder->whereBetween("created_at" , [$fromDate , $toDate])->paginate(10);
-        $fromDate = date("Y-m-d" , strtotime($fromDate));
-        $toDate = date("Y-m-d" , strtotime($toDate));
+        $brands = $builder->whereBetween("created_at", [$fromDate, $toDate])->paginate(10);
+        $fromDate = date("Y-m-d", strtotime($fromDate));
+        $toDate = date("Y-m-d", strtotime($toDate));
         $settings = globalSettings();
-        return view("admin.brands.index", compact("brands" , "keyword", "fromDate" , "toDate" , "settings"));
+        return view("admin.brands.index", compact("brands", "keyword", "fromDate", "toDate", "settings"));
     }
 
     /**
@@ -92,20 +95,44 @@ class BrandsController extends Controller
             "status" => "nullable|string",
             "message" => "nullable|string",
         ]);
-
-        if (!empty($msg = $data["message"] ?? null)) {
-            // Send messae
-            dd($msg);
-        }
-
         $brand = Brand::findorfail($id);
 
+        if (!empty($msg = $data["message"] ?? null)) {
+        }
+        $mail = [
+            "title" => "",
+            "subject" => "",
+            "name" => "",
+            "message" => ""
+        ];
+
+        if ($data["status"] == 0) {
+        }
+
+
         if (!is_null($val = $data["reward"] ?? null)) {
+            if (in_array($val, [1, 2])) {
+                $mail = [
+                    "title" => "Your brand won ". $brand->getReward() ." in the BRAND 4 FREE contest!" ,
+                    "subject" => "Cheers to success, $brand->business_name!",
+                    "name" => $brand->name,
+                    "message" => "Visit the link below to tell us what product you would like to receive!. <a href=" . route("brand_4_free.design_option" , $brand->id) . ">Click here to view choose product</a>"
+                ];
+                Mail::to($brand->email)->send(new BrandRewardMail($mail));
+            }
+
             $brand->update(["reward" => $val]);
         }
 
         if (!empty($val = $data["status"] ?? null)) {
+            $mail = [
+                "title" => $val == 1 ? "Your brand has been shortlisted to participate in the BRAND 4 FREE contest!" : "",
+                "subject" => $val == 1 ? "Congrat, you have been shorlisted" : "BRAND 4 FREE Application Updates",
+                "name" => $brand->name,
+                "message" => $val == 1 ? "Invite your friends and family to visit the contestant list and vote for you!. <a href=" . route("brand_4_free.contestants") . ">Click here to view contestants</a>" : "After thorough review, we concluded that your brand does not qualify at this time! Please try again after reading the rules guiding this programme."
+            ];
             $brand->update(["status" => $val]);
+            Mail::to($brand->email)->send(new BrandListedMail($mail));
         }
         return back()->with('success', 'Brand updated successfully');
     }
@@ -122,7 +149,7 @@ class BrandsController extends Controller
         return back()->with('success', 'Brand deleted successfully');
     }
 
-    
+
     public function settings(Request $request)
     {
         $data = $request->validate([
@@ -131,12 +158,12 @@ class BrandsController extends Controller
             "vote_ends" => "nullable|string",
         ]);
 
-        if($data["brands_intiative_status"] != $this->activeStatus){
+        if ($data["brands_intiative_status"] != $this->activeStatus) {
             $data["vote_starts"] = null;
             $data["vote_ends"] = null;
         }
 
-        if($data["vote_starts"] > $data["vote_ends"]){
+        if ($data["vote_starts"] > $data["vote_ends"]) {
             return back()->with('error', 'Start date cannot be greater than end date!');
         }
 
@@ -149,7 +176,7 @@ class BrandsController extends Controller
         $id = $request->id;
         $brandReward = BrandRewardDesign::findorfail($id);
         $path = $brandReward->getDesignPath();
-        return downloadFileFromPrivateStorage($path , optional($brandReward->brand)->business_name);
+        return downloadFileFromPrivateStorage($path, optional($brandReward->brand)->business_name);
     }
 
     public function designComplete(Request $request)
@@ -158,5 +185,4 @@ class BrandsController extends Controller
         BrandRewardDesign::findorfail($id)->update(["status" => $this->activeStatus]);
         return back()->with('success', 'Brand reward design updated successfully');
     }
-
 }

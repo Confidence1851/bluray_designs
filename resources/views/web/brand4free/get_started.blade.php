@@ -1,9 +1,9 @@
-@extends('web.layout' , ["withHeader" => false , "withFooter" => false , "withStyles" => false , "withJavascript" =>
-false])
-@section('style')
+@extends('web.layout' , ["withHeader" => true , "withFooter" => true , "withStyles" => true , "withJavascript" =>
+true])
+{{-- @section('style')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-@endsection
+@endsection --}}
 @section('content')
     <div class="container" style="padding-top:5%;">
         <!--welcome to bluraydesign brand4free initiative -->
@@ -157,7 +157,7 @@ false])
 
 @stop
 @section('script')
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
 
@@ -167,13 +167,13 @@ false])
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-    </script>
-    @if (session('application_success'))
+    </script> --}}
+    {{-- @if (session('application_success'))
         <script>
             $(document).ready(function() {
                 $("#myModal").modal('show');
             });
 
         </script>
-    @endif
+    @endif --}}
 @endsection

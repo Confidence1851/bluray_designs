@@ -1,8 +1,8 @@
-@extends('web.layout' , ["withHeader" => false , "withFooter" => false])
-@section('style')
+@extends('web.layout' , ["withHeader" => true , "withFooter" => true])
+{{-- @section('style')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-@endsection
+@endsection --}}
 @section('content')
 
     <div class="container" style="padding-top:5%;">
@@ -11,7 +11,8 @@
         <div class="row">
             <div class="col-md-12 jumbotron">
                 <p style="padding-left:3%; margin-right:3%;"></p>
-                <center><img src="{{ my_asset("web/img/brand4free_logo.png") }}" class=" img-fluid" alt="Brand4free logo"></center>
+                <center><img src="{{ my_asset('web/img/brand4free_logo.png') }}" class=" img-fluid" alt="Brand4free logo">
+                </center>
                 <p></p><br>
                 <h4 style="text-align:center; color:#666; font-family: Century Gothic, Arial, Tahoma;">Vote for your
                     favourite brand to win this month's <strong>BRAND4FREE</strong> by Bluray DesignTech </h4>
@@ -46,7 +47,7 @@
             </div>
         </div>
 
-
+        
         @foreach ($brands as $brand)
             <!--voting section -->
             <form action="{{ route('brand_4_free.vote') }}" id="vote_form_{{ $brand->id }}" method="post">@csrf
@@ -86,9 +87,8 @@
 
 
                     </div>
+                </div>
             </form>
         @endforeach
-    </div>
-    </div>
     </div>
 @stop

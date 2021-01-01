@@ -1,8 +1,8 @@
-@extends('web.layout' , ["withHeader" => false , "withFooter" => false])
-@section('style')
+@extends('web.layout' , ["withHeader" => true , "withFooter" => true])
+{{-- @section('style')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-@endsection
+@endsection --}}
 @section('content')
     <div class="container" style="padding-top:3%;">
         <!--welcome to bluraydesign brand4free initiative -->

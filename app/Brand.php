@@ -8,18 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     use Constants;
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->getModelStatus($this->status);
     }
 
-    public function getReward(){
-        if($this->reward == 1){
+    public function user()
+    {
+        return $this->belongsTo(User::class, "user_id",);
+    }
+
+
+    public function getReward()
+    {
+        if ($this->reward == 1) {
             $reward = "1st place";
         }
-        if($this->reward == 2){
+        if ($this->reward == 2) {
             $reward = "2nd place";
         }
-        if($this->reward == 3){
+        if ($this->reward == 3) {
             $reward = "3rd place";
         }
         return $reward ?? "None";
@@ -27,11 +35,22 @@ class Brand extends Model
 
     protected $guarded = [];
 
-    public function getImage(){
-        return route("read_file" , encrypt("$this->brandImagesPath/$this->image"));
+    public function getImage()
+    {
+        return route("read_file", encrypt("$this->brandImagesPath/$this->image"));
     }
 
-    public function brandReward(){
-        return $this->hasOne(BrandRewardDesign::class , "brand_id" , );
+    public function brandReward()
+    {
+        return $this->hasOne(BrandRewardDesign::class, "brand_id",);
+    }
+
+    public static function deleteWithImage(Brand $model, $deleteDesigns = true)
+    {
+        deleteFileFromPrivateStorage("$model->brandImagesPath/$model->image");
+        if ($deleteDesigns) {
+            BrandRewardDesign::where("brand_id", $model->id)->deleteWithImage();
+        }
+        $model->delete();
     }
 }

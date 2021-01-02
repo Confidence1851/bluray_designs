@@ -145,7 +145,7 @@ class BrandsController extends Controller
      */
     public function destroy($id)
     {
-        Brand::findorfail($id)->delete();
+        Brand::findorfail($id)->deleteWithImage();
         return back()->with('success', 'Brand deleted successfully');
     }
 

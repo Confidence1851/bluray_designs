@@ -52,13 +52,7 @@ class HomeController extends Controller
         return view('admin.products',compact('products'));
     }
     
-    public function users()
-    {
-        $users = User::orderby('created_at','desc')->get();
-        return view('admin.users',compact('users'));
-    }
-    
-    
+   
     public function allposts()
     {
         $posts = Post::orderby('created_at','desc')->get();

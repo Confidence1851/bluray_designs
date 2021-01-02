@@ -17,4 +17,10 @@ class BrandRewardDesign extends Model
     public function getDesignPath(){
         return "$this->brandRewardDesignsPath/$this->design";
     }
+
+    public static function deleteWithImage(BrandRewardDesign $model){
+        if(!empty($model->id)){
+            deleteFileFromPrivateStorage($model->getDesignPath());
+        }
+    }
 }

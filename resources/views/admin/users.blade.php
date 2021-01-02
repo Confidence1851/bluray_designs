@@ -34,7 +34,6 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Role</th>
-                            <th>Status</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -45,7 +44,14 @@
                             <td class="align-middle">{{$user->email}}</td>
                             <td class="align-middle">{{$user->phone}}</td>
                             <td class="align-middle">{{$user->role}}</td>
-                            <td class="align-middle"><a href="" class="btn btn-success" data-toggle="modal" data-target="#editmodal-{{$user->id}}" >Edit</a></td>
+                            <td class="align-middle">
+                              <form action="{{ route("users.destroy" , $user->id) }}" method="post">@csrf @method("delete")
+                                <a href="" class="btn btn-success" data-toggle="modal" data-target="#editmodal-{{$user->id}}" >Edit</a>
+                                <button class="btn btn-danger" onclick="return confirm('Are you sure want to delete this user? All orders and information associated with this user will also be permanently deleted!')">
+                                  Delete
+                                </button>
+                              </form>
+                            </td>
                           </tr>
 
                                  <!--Info Modal -->
@@ -58,7 +64,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="row">
-                                                    <form action="{{ route('updateRole',$user->id) }}" method="post">{{csrf_field()}}
+                                                    <form action="{{ route("users.update",$user->id) }}" method="post">{{csrf_field()}} @method("put")
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>Role</label>
@@ -92,6 +98,7 @@
                     </div>
                   </div>
                 </div>
+                {!! $users->links() !!}
               </div>
            
         </section>

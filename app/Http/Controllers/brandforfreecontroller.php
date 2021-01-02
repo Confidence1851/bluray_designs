@@ -39,7 +39,7 @@ class BrandForFreeController extends Controller
             $data["image"] = resizeImageandSave($image, $this->brandImagesPath, 'local', 1080, 920);
         }
 
-        $data["user_id"] = 1;
+        $data["user_id"] = auth()->id();
         Brand::create($data);
         return back()->with("application_success", "Application submitted successfully!");
     }

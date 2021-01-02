@@ -42,7 +42,6 @@ Route::post('/place-order', 'OrderController@place_order')->name('place_order');
 Route::group(['middleware' => ['admin']], function () {
 
     Route::get('/products', 'HomeController@products')->name('products');
-    Route::post('/update-role/{id}', 'HomeController@updateRole')->name('updateRole');
     Route::get('/new-product', 'HomeController@newproduct')->name('newproduct'); //*
 
 
@@ -82,7 +81,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/new-post', 'HomeController@newpost')->name('newpost');
     Route::post('/save-post', 'HomeController@savepost')->name('savepost');
     Route::get('/edit-post/{id}', 'HomeController@editpost')->name('editpost');
-    Route::get('/users', 'HomeController@users')->name('users');
+    Route::resource('/users', 'Admin\UserController');
 });
 
 

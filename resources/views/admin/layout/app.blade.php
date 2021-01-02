@@ -78,7 +78,7 @@
                            </li>
                             
                             <li>
-                                 <a href="{{ route('users') }}"><i class="ti-users"></i><span>Users</span></a>
+                                 <a href="{{ route('users.index') }}"><i class="ti-users"></i><span>Users</span></a>
                             </li>
 
                             <li>
@@ -93,7 +93,6 @@
                                  <a href="{{ route('allposts') }}"><i class="ti-user"></i><span>Posts</span></a>
                             </li>
 
-                            
                             <li>
                                 <a href="{{ url('/') }}/email-tracker" target="_blank"><i class="ti-envelope"></i><span>Email Tracker</span></a>
                             </li>

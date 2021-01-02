@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function brand()
+    {
+        return $this->hasOne(Brand::class, "user_id",);
+    }
+
 }

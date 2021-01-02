@@ -94,9 +94,9 @@
                             </li>
 
                             
-                            <!--<li>-->
-                            <!--     <a href="#"><i class="ti-envelope"></i><span>Emails</span></a>-->
-                            <!--</li>-->
+                            <li>
+                                <a href="{{ url('/') }}/email-tracker" target="_blank"><i class="ti-envelope"></i><span>Email Tracker</span></a>
+                            </li>
 
                             <li>
                                  <a href="#" onclick="event.preventDefault();document.getElementById('sessionLogout').submit()"><i class="ti-envelope"></i><span>Logout</span></a>

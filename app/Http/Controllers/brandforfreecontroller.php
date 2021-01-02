@@ -18,7 +18,6 @@ class BrandForFreeController extends Controller
 
     public function get_started(Request $request)
     {
-
         if ($request->getMethod() == "GET") {
             return view("web.brand4free.get_started");
         }

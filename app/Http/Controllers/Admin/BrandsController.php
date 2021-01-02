@@ -96,9 +96,8 @@ class BrandsController extends Controller
             "message" => "nullable|string",
         ]);
         $brand = Brand::findorfail($id);
+        $msg = $data["message"] ?? null;
 
-        if (!empty($msg = $data["message"] ?? null)) {
-        }
         $mail = [
             "title" => "",
             "subject" => "",
@@ -106,17 +105,17 @@ class BrandsController extends Controller
             "message" => ""
         ];
 
-        if ($data["status"] == 0) {
-        }
-
-
+        
         if (!is_null($val = $data["reward"] ?? null)) {
+            if(empty($msg)){
+                $msg = "Visit the link below to tell us what product you would like to receive!. <a href=" . route("brand_4_free.design_option" , $brand->id) . ">Click here to view choose product</a>";
+            }
             if (in_array($val, [1, 2])) {
                 $mail = [
                     "title" => "Your brand won ". $brand->getReward() ." in the BRAND 4 FREE contest!" ,
                     "subject" => "Cheers to success, $brand->business_name!",
                     "name" => $brand->name,
-                    "message" => "Visit the link below to tell us what product you would like to receive!. <a href=" . route("brand_4_free.design_option" , $brand->id) . ">Click here to view choose product</a>"
+                    "message" => $msg
                 ];
                 Mail::to($brand->email)->send(new BrandRewardMail($mail));
             }
@@ -125,12 +124,18 @@ class BrandsController extends Controller
         }
 
         if (!empty($val = $data["status"] ?? null)) {
+            if(empty($msg)){
+                $msg = $val == 1 ? 
+                    "Invite your friends and family to visit the contestant list and vote for you!. <a href=" . route("brand_4_free.contestants") . ">Click here to view contestants</a>" :
+                    "After thorough review, we concluded that your brand does not qualify at this time! Please try again after reading the rules guiding this programme.";
+            }
             $mail = [
                 "title" => $val == 1 ? "Your brand has been shortlisted to participate in the BRAND 4 FREE contest!" : "",
                 "subject" => $val == 1 ? "Congrat, you have been shorlisted" : "BRAND 4 FREE Application Updates",
                 "name" => $brand->name,
-                "message" => $val == 1 ? "Invite your friends and family to visit the contestant list and vote for you!. <a href=" . route("brand_4_free.contestants") . ">Click here to view contestants</a>" : "After thorough review, we concluded that your brand does not qualify at this time! Please try again after reading the rules guiding this programme."
+                "message" => $msg
             ];
+            // dd($mail);
             $brand->update(["status" => $val]);
             Mail::to($brand->email)->send(new BrandListedMail($mail));
         }
@@ -143,9 +148,9 @@ class BrandsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Brand $brand)
     {
-        Brand::findorfail($id)->deleteWithImage();
+        Brand::deleteWithImage($brand);
         return back()->with('success', 'Brand deleted successfully');
     }
 

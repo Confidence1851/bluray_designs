@@ -2,7 +2,7 @@
 # {{ $mail["title"] }}
 <br>
 Hello {{ $mail["name"] }},
-{{ $mail["message"] }}
+{!! $mail["message"] !!}
 <br>
 Thanks,<br>
 Bluray Designs

@@ -14,7 +14,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Message</label>
-                                    <textarea name="message" class="form-control" id="" cols="30" rows="10"
+                                    <textarea name="message" class="form-control" id="mytextarea" cols="30" rows="10"
                                         placeholder="Enter message if you would like to send a mail to the brand, else leave empty"></textarea>
                                 </div>
                                 <div class="form-group">

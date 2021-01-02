@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="{{ $admin_source }}/datatables/css/app.min.css">
     <link rel="stylesheet" href="{{ $admin_source }}/datatables/datatables.min.css">
     <link rel="stylesheet" href="{{ $admin_source }}/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
-
+    @yield('style')
     <style>
         .moreinfo{
             padding-left: 5px;

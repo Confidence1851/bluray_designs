@@ -8,26 +8,26 @@
 
     <title>Bluray User Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="{{asset('public/dashboard/images/icon/favicon.ico ') }}">
-    <link rel="stylesheet" href="{{asset('public/dashboard/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{asset('public/dashboard/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{asset('public/dashboard/css/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{asset('public/dashboard/css/metisMenu.css') }}">
-    <link rel="stylesheet" href="{{asset('public/dashboard/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{asset('public/dashboard/css/slicknav.min.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ $admin_source }}/images/icon/favicon.ico">
+    <link rel="stylesheet" href="{{ $admin_source }}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ $admin_source }}/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ $admin_source }}/css/themify-icons.css">
+    <link rel="stylesheet" href="{{ $admin_source }}/css/metisMenu.css">
+    <link rel="stylesheet" href="{{ $admin_source }}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ $admin_source }}/css/slicknav.min.css">
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
     <!-- others css -->
-    <link rel="stylesheet" href="{{asset('public/dashboard/css/typography.css') }}">
-    <link rel="stylesheet" href="{{asset('public/dashboard/css/default-css.css') }}">
-    <link rel="stylesheet" href="{{asset('public/dashboard/css/styles.css') }}">
-    <link rel="stylesheet" href="{{asset('public/dashboard/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ $admin_source }}/css/typography.css">
+    <link rel="stylesheet" href="{{ $admin_source }}/css/default-css.css">
+    <link rel="stylesheet" href="{{ $admin_source }}/css/styles.css">
+    <link rel="stylesheet" href="{{ $admin_source }}/css/responsive.css">
     <!-- modernizr css -->
 
     <!-- Start datatable css -->
-    <link rel="stylesheet" href="{{asset('public/dashboard/datatables/css/app.min.css') }}">
-    <link rel="stylesheet" href="{{asset('public/dashboard/datatables/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{asset('public/dashboard/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ $admin_source }}/datatables/css/app.min.css">
+    <link rel="stylesheet" href="{{ $admin_source }}/datatables/datatables.min.css">
+    <link rel="stylesheet" href="{{ $admin_source }}/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
 
     <style>
         .moreinfo{
@@ -62,7 +62,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="{{url('/')}}"><img src="{{ asset('public/web/img/logo.png') }}" alt="logo"></a>
+                    <a href="{{url('/')}}"><img src="{{ $web_source }}/img/logo.png" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -269,28 +269,27 @@
 <!-- offset area start -->
 
      <!-- jquery latest version -->
-    <script src="{{asset('public/dashboard/js/vendor/jquery-2.2.4.min.js') }}"></script>
-    <!-- <script src="{{asset('dashboard/js/jquery-3.3.1.js') }}"></script> -->
-    <!-- bootstrap 4 js -->
-    <script src="{{asset('public/dashboard/js/popper.min.js') }}"></script>
-    <script src="{{asset('public/dashboard/js/bootstrap.min.js') }}"></script>
-    <script src="{{asset('public/dashboard/js/owl.carousel.min.js') }}"></script>
-    <script src="{{asset('public/dashboard/js/metisMenu.min.js') }}"></script>
-    <script src="{{asset('public/dashboard/js/jquery.slimscroll.min.js') }}"></script>
-    <script src="{{asset('public/dashboard/js/jquery.slicknav.min.js') }}"></script>
-
-    <!-- others plugins -->
-    <script src="{{asset('public/dashboard/js/plugins.js') }}"></script>
-    <script src="{{asset('public/dashboard/js/vendor/modernizr-2.8.3.min.js') }}"></script>
-    <script src="{{asset('public/dashboard/js/scripts.js') }}"></script>
-    <script src="https://js.paystack.co/v1/inline.js') }}"></script>
-
-     <!-- Start datatable js -->
-  <script src="{{asset('public/dashboard/datatables/datatables.min.js') }}"></script>
-  <script src="{{asset('public/dashboard/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{asset('public/dashboard/jquery-ui/jquery-ui.min.js') }}"></script>
-  <script src="{{asset('public/dashboard/datatables/js/page/datatables.js') }}"></script>
-
+     <script src="{{ $admin_source }}/js/vendor/jquery-2.2.4.min.js"></script>
+     <!-- <script src="{{ $admin_source }}/js/jquery-3.3.1.js"></script> -->
+     <!-- bootstrap 4 js -->
+     <script src="{{ $admin_source }}/js/popper.min.js"></script>
+     <script src="{{ $admin_source }}/js/bootstrap.min.js"></script>
+     <script src="{{ $admin_source }}/js/owl.carousel.min.js"></script>
+     <script src="{{ $admin_source }}/js/metisMenu.min.js"></script>
+     <script src="{{ $admin_source }}/js/jquery.slimscroll.min.js"></script>
+     <script src="{{ $admin_source }}/js/jquery.slicknav.min.js"></script>
+ 
+     <!-- others plugins -->
+     <script src="{{ $admin_source }}/js/plugins.js"></script>
+     <script src="{{ $admin_source }}/js/vendor/modernizr-2.8.3.min.js"></script>
+     <script src="{{ $admin_source }}/js/scripts.js"></script>
+ 
+      <!-- Start datatable js -->
+   <script src="{{ $admin_source }}/datatables/datatables.min.js"></script>
+   <script src="{{ $admin_source }}/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+   <script src="{{ $admin_source }}/jquery-ui/jquery-ui.min.js"></script>
+   <script src="{{ $admin_source }}/datatables/js/page/datatables.js"></script>
+ 
 </body>
 
 </html>

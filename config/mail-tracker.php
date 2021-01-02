@@ -29,10 +29,11 @@ return [
      */
     'admin-route' => [
         'enabled' => true, // Should the admin routes be enabled?
-        'prefix' => 'email-manager',
+        'prefix' => 'email-tracker',
         'middleware' => [
             'web',
-            'can:see-sent-emails'
+            'admin'
+            // 'can:see-sent-emails'
         ],
     ],
 

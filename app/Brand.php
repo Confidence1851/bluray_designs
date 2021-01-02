@@ -48,8 +48,8 @@ class Brand extends Model
     public static function deleteWithImage(Brand $model, $deleteDesigns = true)
     {
         deleteFileFromPrivateStorage("$model->brandImagesPath/$model->image");
-        if ($deleteDesigns) {
-            BrandRewardDesign::where("brand_id", $model->id)->deleteWithImage();
+        if ($deleteDesigns && !empty($reward = $model->brandReward)) {
+            BrandRewardDesign::deleteWithImage($reward);
         }
         $model->delete();
     }

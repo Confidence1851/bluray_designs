@@ -63,13 +63,13 @@ function resizeImageandSave($image, $path, $disk = 'local', $width = 300, $heigh
     // read image file and resize it to 262x54
     $img = Image::make($image);
     //Resize image
-    // $img->resize($width, $height, function ($constraint) {
-    //     $constraint->aspectRatio();
-    //     $constraint->upsize();
-    // });
+    $img->resize($width, $height, function ($constraint) {
+        $constraint->aspectRatio();
+        $constraint->upsize();
+    });
 
     // insert resized image centered into background
-    $background->fill($img);
+    $background->insert($img);
 
     // save
     $filename = uniqid() . '.' . $image->getClientOriginalExtension();

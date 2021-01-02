@@ -194,6 +194,9 @@
                     <p class="aligncenter margintop20">
                       Forgot password? <a href="#myReset" data-dismiss="modal" aria-hidden="true" data-toggle="modal">Reset</a>
                     </p>
+                    <p class="aligncenter margintop20">
+                      Don`t have an account? <a href="#mySignup" data-dismiss="modal" aria-hidden="true" data-toggle="modal">Sign up</a>
+                    </p>
                   </div>
                 </form>
               </div>

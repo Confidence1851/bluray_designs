@@ -9,14 +9,14 @@
         <!--welcome to bluraydesign brand4free initiative -->
         @include("web.fragments.flash_message")
         <div class="row">
-            <div class="col-md-12 jumbotron">
+            <div class="span12">
                 <p style="padding-left:3%; margin-right:3%;"></p>
                 <center><img src="{{ my_asset('web/img/brand4free_logo.png') }}" class=" img-fluid" alt="Brand4free logo">
                 </center>
                 <p></p><br>
                 <h4 style="text-align:center; color:#666; font-family: Century Gothic, Arial, Tahoma;">Vote for your
                     favourite brand to win this month's <strong>BRAND4FREE</strong> by Bluray DesignTech </h4>
-                <h5 style="text-align:center">Would you like to support this initiative and help a brand grow? <a href=""
+                <h5 style="text-align:center; margin-top:1px;">Would you like to support this initiative and help a brand grow? <a href=""
                         style="font-style:italic">Donate here</a> </h5>
 
             </div>
@@ -25,7 +25,7 @@
 
         <!--leaderboard and time -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="span12" style="margin-top:0px; padding-top:0px;">
                 <blockquote
                     style="border:#09F; text-align:center; border-style:solid; border-width:1px 1px 1px 1px; padding:1%;">
                     <strong style="color:#09F">Currently Leading:</strong>
@@ -54,9 +54,9 @@
                 <input type="hidden" name="brand_id" value="{{ $brand->id }}" required>
                 <div class="row" style="margin-top:3%; margin-bottom:10%; color:#333;">
 
-                    <div class="col-md-3 col-sm-4 col-4"><img class="rounded img-fluid" src="{{ $brand->getImage() }}">
+                    <div class="span3"><img style="background-repeat: no-repeat;" src="{{ $brand->getImage() }}"/>
                     </div>
-                    <div class="col-md-8 col-sm-8" style="margin-top:1%;">
+                    <div class="span8" style="margin-top:1%;">
                         <h4 style="font-size:20px; font-weight:bold; margin-bottom:0px; padding-bottom:0px;;">
                             {{ $brand->business_name }}
                         </h4>
@@ -67,12 +67,12 @@
                                 @if (!in_array($brand->id, $votedBrands))
                                     <span onclick="return $(vote_form_{{ $brand->id }}).trigger('submit')"
                                         style="cursor: pointer">
-                                        <i class="fas fa-thumbs-up "> Vote</i>
+                                       <button class="btn btn-large btn-warning" type="button"><i class="icon-chevron-up">  Vote </i> </button>
                                     </span>
                                 @else
-                                    <i class="fas fa-thumbs-up "> Voted</i>
+                                    <button class="btn btn-large btn-success" type="button"><i class="icon-ok-sign"> Voted</i></button>
                                 @endif
-                                <span>| Total Votes: {{ $brand->votes }}</span>
+                                <span> Total Votes: <b> {{ $brand->votes }}</b></span>
                             </h6>
 
 

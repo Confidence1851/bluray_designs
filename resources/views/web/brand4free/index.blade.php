@@ -7,13 +7,19 @@
     <div class="container" style="padding-top:3%;">
         <!--welcome to bluraydesign brand4free initiative -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="span12">
                 <p style="padding-left:3%; margin-bottom:4%; padding-right:3%;"></p>
-                <center><img src="{{ my_asset("web/img/brand4free_logo.png") }}" class=" img-fluid" alt="Brand4free logo"></center>
+                <center></center>
                 <p></p>
-                <h2 style="text-align:center; color:#666; font-family: Century Gothic, Arial, Tahoma; font-size:24px;">
-                    WELCOME TO BLURAY DESIGNTECH'S<br> <span style="font-size:40px; color:#036;"> <b><i>BRAND4FREE</i></b>
+                <h2 class="hidden-phone" style="text-align:center; color:#666; font-family: Century Gothic, Arial, Tahoma; font-size:35px; padding-top:1%;">
+                    Welcome to Bluray DesignTech's<br> <span style="font-size:60px; color:#036;"> <b><i>BRAND4FREE</i></b>
                         INITIATIVE</span></h2>
+                        
+                        
+                        <div class="visible-phone" style="margin-top:10%;">
+                            <p style=" font-size:18px; margin-bottom:0px; text-align:center; font-weight:bold; font-family: Futura, Tahoma;"> Welcome to Bluray DesignTech's </p>
+                            <h4 style=" color:#036; padding-top:0px;"> <b><i>BRAND4FREE</i></b> INITIATIVE</h4>
+                        </div>
             </div>
         </div>
 
@@ -21,15 +27,15 @@
         <!--picture and intro section -->
         <div class="row" style="margin-top:5%; margin-bottom:10%; color:#666;:">
 
-            <div class="col-md-6 col-sm-6 col-lg-6">
-                <img class="img-fluid" alt="The Entreprenuer" src="{{ my_asset("web/img/brand.png") }}">
+            <div class="span6 pull-left">
+                <img class="img-control" alt="The Entreprenuer" src="{{ my_asset("web/img/brand.png") }}">
             </div>
 
 
 
 
-            <div class="clearfix"></div>
-            <div class="col-md-5 col-sm-5 col-lg-5" style="text-align:justify">
+           
+            <div class="span5" style="text-align:justify">
                 <hr>
                 <p>As a corporate branding agency, we are passionate about helping businesses; particularly SMEs grow their
                     brands through print/digital branding services.
@@ -44,7 +50,11 @@
                 <p>Will you like to participate? create an account and login to get started...</p>
 
                 <p>
-                    <a href="{{ route('brand_4_free.get_started') }}" class="btn btn-primary"> Get Started</a>
+                    @if (auth()->check())
+                        <a href="{{ route('brand_4_free.get_started') }}" class="btn btn-primary"> Get Started</a>
+                    @else
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#mySignin">Sign In</a>
+                    @endif
                     <a href="{{ route('brand_4_free.contestants') }}" class="btn btn-success"> View Contestants</a>
                 </p>
             </div>

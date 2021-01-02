@@ -9,22 +9,24 @@ true])
         <!--welcome to bluraydesign brand4free initiative -->
         @include("web.fragments.flash_message")
         <div class="row">
-            <div class="col-md-12">
+            <div class="span12">
+                <center>
                 <p style="padding-left:3%; margin-right:3%;"></p>
-                <center><img src="{{ my_asset("web/img/brand4free_logo.png") }}" class=" img-fluid" alt="Brand4free logo"></center>
+                <center><img src="{{ my_asset("web/img/brand4free_logo.png") }}" class=" img-responsive" alt="Brand4free logo"></center>
                 <p></p>
                 <h2 style="text-align:center; color:#666; font-family: Century Gothic, Arial, Tahoma;">SUBMIT YOUR
                     APPLICATION</h2>
+                    </center>
 
             </div>
         </div>
 
 
         <!--picture and intro section -->
-        <div class="row" style="margin-top:3%; margin-bottom:10%; color:#333;">
+        <div class="row" style="margin-top:3%; margin-bottom:5%; color:#333;">
 
-            <div class="col-md-5 col-sm-10 jumbotron  col-lg-5"
-                style="font-size:16px; padding:2%; margin-right:2%; text-align:justify; ">
+            <div class="span5 jumbotron"
+                style="font-size:16px; padding:2%; margin-right:0%; text-align:justify; ">
                 <p><b>IMPORTANT NOTES:</b></p>
 
                 <ul>
@@ -53,14 +55,14 @@ true])
 
 
 
-            <div class="col-md-6 col-sm-12 col-lg-6 push-right"
+            <div class="span6 push-right"
                 style="text-align:justify; padding:1%; margin-left:3%; border:#CCC; border-style:solid; border-width:1px 1px 1px 1px; border-bottom-left-radius:10px; border-bottom-right-radius:10px; border-top-left-radius:10px; border-top-right-radius:10px;">
                 <style></style>
 
                 <form method="post" action="{{ route('brand_4_free.get_started') }}" class="was-validated"
                     enctype="multipart/form-data">@csrf
                     <div class="form-group">
-                        <label for="email"><strong>* Full Name:</strong></label>
+                        <label for="email"><strong>Full Name:</strong></label>
                         <input type="text" name="name" class="form-control" placeholder="Enter Full Name" id="username"
                             required>
                     </div>
@@ -117,34 +119,7 @@ true])
 
                     <!--modal section -->
                     <!-- The Modal -->
-                    <div class="modal" id="myModal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title" style="text-align:left;">Congratulations! Application submitted
-                                        successfully.</h5>
-                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body" style="text-align:left">
-                                    You'll get a response from us within the next four(4) days. Make sure to check your
-                                    email spam if you did not receive any mail from us in your inbox. <a
-                                        href="https://bluraydesigns.com/">
-                                        <p>Go to homepage</p>
-                                    </a>
-                                </div>
-
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                   
 
                 </form>
 

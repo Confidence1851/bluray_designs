@@ -7,7 +7,7 @@ false])
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-12 col-sm-10 col-md-7 offset-2" style="margin-top:3%;">
+            <div class="span10 offset-2" style="margin-top:3%;">
                 <p><strong>Congratulations, {{ $brand->business_name }}!</strong> Select your print choice.</p>
                 <p style="margin-bottom:0px; color:#09F;"><strong>*Please note</strong></p>
                 <hr style="margin-bottom:2px; margin-top:3px;">
@@ -25,7 +25,7 @@ false])
         <form action="{{ route('brand_4_free.design_option') }}" method="post" enctype="multipart/form-data">@csrf
             <input type="hidden" value="{{ $brand->id }}" name="brand_id" required>
             <div class="row">
-                <div class="col-12 col-sm-10 col-md-8 offset-2 jumbotron" style="margin-top:1%;">
+                <div class="span10 offset-2 jumbotron" style="margin-top:1%;">
                     <div class="">
                         @include("web.fragments.flash_message")
 

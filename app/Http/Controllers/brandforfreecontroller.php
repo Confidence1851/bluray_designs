@@ -83,8 +83,8 @@ class BrandForFreeController extends Controller
     public function designOption(Request $request)
     {
         $brand = Brand::findorfail($request->brand_id);
-        if(in_array($brand->reward , [0])){
-            abort(403 , "Access denied");
+        if (in_array($brand->reward, [0])) {
+            abort(403, "Access denied");
         }
         if ($request->getMethod() == "GET") {
             $rewardProducts = rewardProducts();
@@ -95,16 +95,16 @@ class BrandForFreeController extends Controller
             "selected_product" => "required|string",
             "full_name" => "required|string",
             "details" => "required|string",
-            "design" => "nullable|mimetypes:".imageMimes().'/'.docMimes(),
+            "design" => "nullable|mimetypes:" . imageMimes() . '/' . docMimes(),
         ]);
 
-        $check = BrandRewardDesign::where("brand_id" , $data["brand_id"])->count();
-        if($check > 0){
+        $check = BrandRewardDesign::where("brand_id", $data["brand_id"])->count();
+        if ($check > 0) {
             return back()->with("error_msg", "A request has already been submitted for this brand!");
         }
 
-        if(!empty($design = $request->file("design"))){
-            $data["design"] = putFileInPrivateStorage($design , $this->brandRewardDesignsPath);
+        if (!empty($design = $request->file("design"))) {
+            $data["design"] = putFileInPrivateStorage($design, $this->brandRewardDesignsPath);
         }
         BrandRewardDesign::create($data);
         return back()->with("success_msg", "Request submitted successfully!");

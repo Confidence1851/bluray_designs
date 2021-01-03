@@ -6,8 +6,7 @@ use App\AppSetting;
 use App\Brand;
 use App\BrandRewardDesign;
 use App\Http\Controllers\Controller;
-use App\Mail\BrandListedMail;
-use App\Mail\BrandRewardMail;
+use App\Mail\AppMail;
 use App\Traits\Constants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -117,7 +116,7 @@ class BrandsController extends Controller
                     "name" => $brand->name,
                     "message" => $msg
                 ];
-                Mail::to($brand->email)->send(new BrandRewardMail($mail));
+                Mail::to($brand->email)->send(new AppMail($mail));
             }
 
             $brand->update(["reward" => $val]);
@@ -137,7 +136,7 @@ class BrandsController extends Controller
             ];
             // dd($mail);
             $brand->update(["status" => $val]);
-            Mail::to($brand->email)->send(new BrandListedMail($mail));
+            Mail::to($brand->email)->send(new AppMail($mail));
         }
         return back()->with('success', 'Brand updated successfully');
     }

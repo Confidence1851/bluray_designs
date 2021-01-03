@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class BrandRewardMail extends Mailable
+class AppMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,6 +30,6 @@ class BrandRewardMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.brand_listed')->subject($this->mail["subject"]);
+        return $this->markdown('emails.app_mail')->subject($this->mail["subject"]);
     }
 }

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Brand;
 use App\BrandRewardDesign;
+use App\Mail\AppMail;
 use App\Traits\Constants;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class BrandForFreeController extends Controller
 {
@@ -110,4 +112,15 @@ class BrandForFreeController extends Controller
         BrandRewardDesign::create($data);
         return back()->with("success_msg", "Request submitted successfully!");
     }
+
+    public function donate(Request $request)
+    {
+        $mail = [
+            "subject" => "New BRAND 4 FREE Donation",
+            "message" => "<p>New donation of $request->amount has been received from $request->email</p>"
+        ];
+        Mail::to(env("MAIL_FROM_ADDRESS"))->send(new AppMail($mail));
+        return back()->with("success_msg", "Donation received successfully!");
+    }
+
 }

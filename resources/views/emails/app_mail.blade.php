@@ -1,7 +1,9 @@
 @component('mail::message')
-# {{ $mail["title"] }}
+# {{ $mail["title"] ?? '' }}
 <br>
-Hello {{ $mail["name"] }},
+@if (!empty($name = $mail["name"] ?? ''))
+Hello {{ $name  }},
+@endif
 {!! $mail["message"] !!}
 <br>
 Thanks,<br>

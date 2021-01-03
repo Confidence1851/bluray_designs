@@ -8,6 +8,7 @@
     <div class="container" style="padding-top:5%;">
         <!--welcome to bluraydesign brand4free initiative -->
         @include("web.fragments.flash_message")
+        @include("web.brand4free.fragments.donate_modal")
         <div class="row">
             <div class="span12">
                 <p style="padding-left:3%; margin-right:3%;"></p>
@@ -16,9 +17,9 @@
                 <p></p><br>
                 <h4 style="text-align:center; color:#666; font-family: Century Gothic, Arial, Tahoma;">Vote for your
                     favourite brand to win this month's <strong>BRAND4FREE</strong> by Bluray DesignTech </h4>
-                <h5 style="text-align:center; margin-top:1px;">Would you like to support this initiative and help a brand grow? <a href=""
-                        style="font-style:italic">Donate here</a> </h5>
-
+                <h5 style="text-align:center; margin-top:1px;">Would you like to support this initiative and help a brand grow? 
+                    <a href="#" data-toggle="modal" data-target="#brand4free_donate" style="font-style:italic">Donate here</a> 
+                </h5>
             </div>
         </div>
 

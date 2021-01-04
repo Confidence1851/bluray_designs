@@ -2,7 +2,7 @@
 jQuery(document).ready(function ($) {
   "use strict";
 
-  const PAYSTACK_KEY = "pk_test_538bcf8aec2d53a94de47fee286f0ae23692d023";
+  const PAYSTACK_KEY = "pk_live_a064620026961174000212894e7fb55a36ab7ef9";
   //  'pk_live_a064620026961174000212894e7fb55a36ab7ef9',  //pk_test_538bcf8aec2d53a94de47fee286f0ae23692d023
 
 

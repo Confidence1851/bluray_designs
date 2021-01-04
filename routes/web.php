@@ -19,6 +19,7 @@ Route::as("brand_4_free.")->prefix("brand-for-free")->group(function () {
     Route::post('/vote', 'BrandForFreeController@vote')->name("vote");
     Route::match(["get", "post"], '/design-option', 'BrandForFreeController@designOption')->name("design_option");
     Route::match(["get", "post"], '/get-started', 'BrandForFreeController@get_started')->name("get_started")->middleware("auth");
+    Route::post('/donate', 'BrandForFreeController@donate')->name("donate");
 });
 
 Route::get('/file/{path}/{download?}', 'WebController@read_file')->name('read_file');

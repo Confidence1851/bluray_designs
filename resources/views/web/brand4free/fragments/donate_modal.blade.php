@@ -5,7 +5,7 @@
         <h4 id="brand4free_donateLabel">Support the initative</h4>
     </div>
     <div class="modal-body">
-        <form class="form-horizontal" method="POST" id="brand4freeDonateForm" action="{{ route('login') }}">
+        <form class="form-horizontal" method="POST" id="brand4freeDonateForm" action="{{ route("brand_4_free.donate") }}">
             @csrf
 
             <div class="login-errors" style="display: none">

@@ -115,9 +115,16 @@ class BrandForFreeController extends Controller
 
     public function donate(Request $request)
     {
+        if(auth()->check()){
+            $user_email = auth()->user()->email;
+            $extra = "Donated from user account with email (<a href='mailto:$user_email'>$user_email</a>).";
+        }
+        else{
+            $extra = 'Donated by guest.';
+        }
         $mail = [
             "subject" => "New BRAND 4 FREE Donation",
-            "message" => "<p>New donation of $request->amount has been received from $request->email</p>"
+            "message" => "<p> New donation of #".number_format($request->amount , 2)." has been received from <a href='mailto:$request->email'>$request->email</a> . <br> Payment reference: $request->reference. <br> $extra </p>"
         ];
         Mail::to(env("MAIL_FROM_ADDRESS"))->send(new AppMail($mail));
         return back()->with("success_msg", "Donation received successfully!");

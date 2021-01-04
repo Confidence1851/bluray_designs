@@ -476,37 +476,35 @@ jQuery(document).ready(function ($) {
 
 
 
-  $('#brand4freeDonateForm').submit(async function (e) {
-    e.preventDefault();
-    let customer_email = $(this).find("#donate-email").val();
-    let amount = $(this).find("#donate-amount").val();
-    let reference = await paystackHandler(customer_email , amount , );
-    console.log(reference);
-    console.log($(this));
+  $('#brand4freeDonateForm').submit(function (e) {
+    let form = $(this);
+    let customer_email = form.find("#donate-email").val();
+    let amount = form.find("#donate-amount").val();
+    let pay_ref = form.find("#donate-pay_ref").val();
+    if (pay_ref == null || pay_ref == '') {
+      e.preventDefault();
+      var handler = PaystackPop.setup({
+        key: PAYSTACK_KEY,
+        email: customer_email,
+        amount: amount * 100,
+        currency: "NGN",
+        ref: '' + Math.floor((Math.random() * 1000000000) + 1),
 
-    $(this).find("#donate-pay_ref").val(reference);
-    $(this).submit();
-   
+        callback: function (response) {
+          console.log(response.reference);
+          console.log(form);
+          form.find("#donate-pay_ref").val(response.reference);
+          form.trigger("submit");
+        },
+        onClose: function () {
+          // $('#tran_msg').html('Donation payment cancelled!');
+        }
+      });
+      handler.openIframe();
+    }
   });
 
-  function paystackHandler(email , amount , onSuccess = () => {} , onClose  = () => {}){
-    var handler = PaystackPop.setup({
-      key: PAYSTACK_KEY,
-      email: email,
-      amount: amount * 100,
-      currency: "NGN",
-      ref: '' + Math.floor((Math.random() * 1000000000) + 1),
 
-      callback: function (response) {
-        onSuccess();
-        return response.reference;
-      },
-      onClose: function () {
-        onClose();
-        return null;
-      }
-    });
-    handler.openIframe();
-  }
+
 });
 //

@@ -100,12 +100,13 @@ class BrandForFreeController extends Controller
             $rewardProducts = rewardProducts();
             return view("web.brand4free.design_option", compact("brand", "rewardProducts"));
         }
+
         $data = $request->validate([
             "brand_id" => "required|string|exists:brands,id",
             "selected_product" => "required|string",
             "full_name" => "required|string",
             "details" => "required|string",
-            "design" => "nullable|mimetypes:" . imageMimes() . '/' . docMimes(),
+            "design" => "nullable|mimes:pdf,jpg,cdr",
         ]);
 
         $check = BrandRewardDesign::where("brand_id", $data["brand_id"])->count();

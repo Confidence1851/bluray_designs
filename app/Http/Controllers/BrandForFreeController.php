@@ -43,7 +43,14 @@ class BrandForFreeController extends Controller
         }
 
         $data["user_id"] = auth()->id();
-        Brand::create($data);
+        $brand = Brand::create($data);
+        $mail = [
+            'title' => '',
+            'subject' => "BRAND 4 FREE Application Received!",
+            'name' => $brand->name,
+            'message' => "Your application to participate in the BRAND 4 FREE contest has been received!' : '"
+        ];
+        Mail::to($brand->email)->send(new AppMail($mail));
         return back()->with("application_success", "Application submitted successfully!");
     }
 

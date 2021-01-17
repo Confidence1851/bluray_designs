@@ -18,7 +18,7 @@ class BrandForFreeController extends Controller
         return view("web.brand4free.index");
     }
 
-    
+
 
     public function get_started(Request $request)
     {
@@ -50,6 +50,14 @@ class BrandForFreeController extends Controller
 
     public function contestants()
     {
+        $voteEndDate = !empty($date = globalSettings()->vote_ends) ? date("l d F, Y", strtotime($date)) : "Inactive";
+        if ($voteEndDate == "Inactive") {
+            $voteStatus = "inactive";
+        } elseif ($voteEndDate >= today()) {
+            $voteStatus = "ended";
+        } else {
+            $voteStatus = "active";
+        }
         $cookieKey = $this->myVotedBrandsCookieKey;
         $fromDate = carbon()->startOfMonth();
         $toDate = carbon()->endOfMonth();
@@ -60,8 +68,7 @@ class BrandForFreeController extends Controller
             ->get();
         $topVoted = $brands->sortByDesc(["votes"])->take(2);
         $votedBrands =  session()->has($cookieKey) ? unserialize(session()->get($cookieKey)) : [];
-        $voteEndDate = !empty($date = globalSettings()->vote_ends) ? date("l d F, Y", strtotime($date)) : "Inactive";
-        return view("web.brand4free.contestants", compact("month", "brands", "votedBrands", "topVoted", "voteEndDate"));
+        return view("web.brand4free.contestants", compact("month", "brands", "votedBrands", "topVoted", "voteEndDate" , "voteStatus"));
     }
 
     public function vote(Request $request)
@@ -115,19 +122,17 @@ class BrandForFreeController extends Controller
 
     public function donate(Request $request)
     {
-        if(auth()->check()){
+        if (auth()->check()) {
             $user_email = auth()->user()->email;
             $extra = "Donated from user account with email (<a href='mailto:$user_email'>$user_email</a>).";
-        }
-        else{
+        } else {
             $extra = 'Donated by guest.';
         }
         $mail = [
             "subject" => "New BRAND 4 FREE Donation",
-            "message" => "<p> New donation of #".number_format($request->amount , 2)." has been received from <a href='mailto:$request->email'>$request->email</a> . <br> Payment reference: $request->reference. <br> $extra </p>"
+            "message" => "<p> New donation of #" . number_format($request->amount, 2) . " has been received from <a href='mailto:$request->email'>$request->email</a> . <br> Payment reference: $request->reference. <br> $extra </p>"
         ];
         Mail::to(env("MAIL_FROM_ADDRESS"))->send(new AppMail($mail));
         return back()->with("success_msg", "Donation received successfully!");
     }
-
 }

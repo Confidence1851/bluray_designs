@@ -273,3 +273,4 @@ function getFileType(String $type)
        }
        return $products;
    }
+

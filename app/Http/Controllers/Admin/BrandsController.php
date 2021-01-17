@@ -112,7 +112,7 @@ class BrandsController extends Controller
 
         if (!is_null($val = $data['reward'] ?? null)) {
             if (empty($msg)) {
-                $msg = 'After emerging as the top 2 on this month Brand4Free contest, 
+                $msg = 'After emerging as the top 2 on '. date("F, Y" , strtotime(now())).'`s Brand4Free contest, 
                 you are now eligible to receive free design and print from us. 
                 <br> 
                 Kindly click on the link below to make your preferred selection.
@@ -172,11 +172,15 @@ class BrandsController extends Controller
             'brands_intiative_status' => 'required|string',
             'vote_starts' => 'nullable|string',
             'vote_ends' => 'nullable|string',
+            'n_vote_starts' => 'nullable|string',
+            'n_vote_ends' => 'nullable|string',
         ]);
 
         if ($data['brands_intiative_status'] != $this->activeStatus) {
             $data['vote_starts'] = null;
             $data['vote_ends'] = null;
+            $data['n_vote_starts'] = null;
+            $data['n_vote_ends'] = null;
         }
 
         if ($data['vote_starts'] > $data['vote_ends']) {

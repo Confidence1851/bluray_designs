@@ -124,6 +124,8 @@
                             @endforeach
                             &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <strong style="color:#09F">Voting Ended on:</strong>
                             {{ $voteEndDate ?? '' }}
+                            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <strong style="color:#09F">Next Voting Period:</strong>
+                            {{ $nextVotingPeriods }}
                         </blockquote>
                     </div>
                 </div>

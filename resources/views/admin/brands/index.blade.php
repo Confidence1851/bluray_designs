@@ -160,6 +160,20 @@
                                         class="form-control">
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Next Vote Starts</label>
+                                    <input type="date" value="{{ $settings->n_vote_starts }}" name="n_vote_starts" required
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Next Vote Ends</label>
+                                    <input type="date" value="{{ $settings->n_vote_ends }}" name="n_vote_ends" required
+                                        class="form-control">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group">

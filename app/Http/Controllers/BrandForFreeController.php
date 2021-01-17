@@ -50,7 +50,8 @@ class BrandForFreeController extends Controller
 
     public function contestants()
     {
-        $voteEndDate = !empty($date = globalSettings()->vote_ends) ? date("l d F, Y", strtotime($date)) : "Inactive";
+        $settings = globalSettings();
+        $voteEndDate = !empty($date = $settings->vote_ends) ? date("l d F, Y", strtotime($date)) : "Inactive";
         if ($voteEndDate == "Inactive") {
             $voteStatus = "inactive";
         } elseif ($voteEndDate >= today()) {
@@ -58,6 +59,8 @@ class BrandForFreeController extends Controller
         } else {
             $voteStatus = "active";
         }
+        $nextVotingPeriods = !empty($settings->n_vote_starts) ?
+                            date("d", strtotime($settings->n_vote_starts))." to ".date("d F, Y", strtotime($settings->n_vote_ends)) : "Coming soon!";
         $cookieKey = $this->myVotedBrandsCookieKey;
         $fromDate = carbon()->startOfMonth();
         $toDate = carbon()->endOfMonth();
@@ -68,7 +71,7 @@ class BrandForFreeController extends Controller
             ->get();
         $topVoted = $brands->sortByDesc(["votes"])->take(2);
         $votedBrands =  session()->has($cookieKey) ? unserialize(session()->get($cookieKey)) : [];
-        return view("web.brand4free.contestants", compact("month", "brands", "votedBrands", "topVoted", "voteEndDate" , "voteStatus"));
+        return view("web.brand4free.contestants", compact("month", "brands", "votedBrands", "topVoted", "voteEndDate" , "voteStatus" , "nextVotingPeriods"));
     }
 
     public function vote(Request $request)

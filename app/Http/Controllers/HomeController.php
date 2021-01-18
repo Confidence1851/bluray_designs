@@ -372,7 +372,7 @@ class HomeController extends Controller
     public function savepost(Request $request){
         $id = $request['id'];
         if(is_null($id)){
-            $title = 'required|unique:posts|max:40';
+            $title = 'required|unique:posts|max:100';
             $reqImg = 'required';
         }
         else{
@@ -381,7 +381,7 @@ class HomeController extends Controller
                 $title = 'required' ;
             }
             else{
-                $title = 'required|unique:posts|max:40';
+                $title = 'required|unique:posts|max:100';
             }
             $reqImg = 'nullable';
 
@@ -391,7 +391,7 @@ class HomeController extends Controller
             'message' => 'required',
             'category' => 'required',
             'status' => 'required',
-            'image' => $reqImg,
+            'image' => $reqImg."|image",
         ]);
         $user = Auth::user();
 

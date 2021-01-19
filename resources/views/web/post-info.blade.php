@@ -30,19 +30,18 @@
                     <div class="post-heading">
                       <h3><a href="#">{{$post->title}}</a></h3>
                     </div>
-                    <img src="{{ asset('public/post_images/'.$post->image ) }}" alt="{{$post->title}}" />
+                    <img src="{{ my_asset('post_images/'.$post->image ) }}" alt="{{$post->title}}" />
                   </div>
                   <p>
-                  {{$post->message}}
+                  {!!  $post->message !!}
                   </p>
                   
                   <div class="bottom-article">
                     <ul class="meta-post">
-                      @php($cmts = App\Comment::where('post_id',$post->id)->count())
                       <li><i class="icon-calendar"></i><a href="#"> {{date('D, M d y',strtotime($post->created_at))}}</a></li>
                       <li><i class="icon-user"></i><a href="javascript:void(0)"> Admin</a></li>
                       <li><i class="icon-folder-open"></i><a href="javascript:void(0)">{{$post->category}}</a></li>
-                      <li><i class="icon-comments"></i><a href="javascript:void(0)"><span class="comment-count">{{$cmts}}</span> Comments</a></li>
+                      <li><i class="icon-comments"></i><a href="javascript:void(0)"><span class="comment-count">{{ $post->comments->count() }}</span> Comments</a></li>
                     </ul>
                   </div>
                 </div>
@@ -50,7 +49,7 @@
             </article>
         
             <div class="comment-area">
-              <h4><span class="comment-count">{{$cmts}}</span> Comments</h4>
+              <h4><span class="comment-count">{{ $post->comments->count() }}</span> Comments</h4>
                 <div id="comment-list">
                   @foreach($comments as $comment)
                     @if(!empty($comment->user_id))
@@ -59,7 +58,7 @@
                       @php( $name = $comment->name)
                     @endif
                   <div class="media">
-                    <a href="#" class="thumbnail pull-left"><img src="{{ asset('public/web/img/avatar.png') }}" alt="" /></a>
+                    <a href="#" class="thumbnail pull-left"><img src="{{ my_asset('web/img/avatar.png') }}" alt="" /></a>
                     <div class="media-body">
                       <div class="media-content">
                         <h6><span>{{date('D, M d Y',strtotime($comment->created_at))}}</span> {{$name}}</h6>
@@ -101,7 +100,7 @@
                   <ul class="recent">
                     @foreach($relates as $relate)
                     <li>
-                      <img src="{{ asset('public/post_images/'.$relate->image ) }}" class="pull-left" alt="{{$relate->title}}" />
+                      <img src="{{ my_asset('post_images/'.$relate->image ) }}" class="pull-left" alt="{{$relate->title}}" />
 
                       <h6><a href="{{ route('blogpost',['id'=> $relate->id,'slug' => $relate->slug]) }}">{{$relate->title}}</a></h6>
                      

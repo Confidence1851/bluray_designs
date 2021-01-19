@@ -52,7 +52,7 @@ class WebController extends Controller
     public function blog()
     {
         $post_cats = $this->post_categories();
-        $posts = Post::where('status',1)->orderby('created_at','desc')->get();
+        $posts = Post::where('status',1)->orderby('created_at','desc')->paginate(20);
         $latests = Post::orderby('updated_at','desc')->paginate(10);
         return view('web.blog',compact('posts','post_cats','latests'));
     }

@@ -78,10 +78,11 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/delete-product/{id}', 'HomeController@delproduct')->name('delproduct');
     Route::get('/change-product-status/{id}', 'HomeController@changestat')->name('changestat');
 
-    Route::get('/all-posts', 'HomeController@allposts')->name('allposts');
-    Route::get('/new-post', 'HomeController@newpost')->name('newpost');
-    Route::post('/save-post', 'HomeController@savepost')->name('savepost');
-    Route::get('/edit-post/{id}', 'HomeController@editpost')->name('editpost');
+    Route::get('/all-posts', 'Admin\PostController@allposts')->name('allposts');
+    Route::get('/new-post', 'Admin\PostController@newpost')->name('newpost');
+    Route::post('/save-post', 'Admin\PostController@savepost')->name('savepost');
+    Route::get('/edit-post/{id}', 'Admin\PostController@editpost')->name('editpost');
+    Route::get('/post-comments/{id}', 'Admin\PostController@comments')->name('post.comments');
     Route::resource('/users', 'Admin\UserController');
 });
 

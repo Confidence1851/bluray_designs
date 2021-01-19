@@ -10,15 +10,15 @@
                 <div class="card">
                   <div class="card-header">
                     @if(empty($post->id))
-                    <h4>New Product</h4>
+                    <h4>New Post</h4>
                     @else
-                    <h4>Edit Product</h4>
+                    <h4>Edit Post</h4>
                     @endif
                   </div>
                 <form action="{{ route('savepost') }}" method="post" enctype="multipart/form-data">{{csrf_field()}}
                   <div class="card-body">
                 <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Title</label>
                                 <input type="hidden" name="id" value="{{$post->id}}">
@@ -75,58 +75,38 @@
 
                         
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12 mb-3">
                             <label for="">Post Story</label>
-                            <textarea name="message" id="" class="form-control" cols="30" rows="8" required>{{ old('message') ?? $post->message }}</textarea>
+                            <textarea name="message" id="mytextarea" class="form-control" cols="30" rows="8" required>{{ old('message') ?? $post->message }}</textarea>
                             @error('message')
                                 <span class="error-form" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary offset-md-11">Submit</button>
+                        <div class="form-group col-md-5">
+                            <label for="">SEO keywords</label>
+                            <input class="form-control" type="text" name="seo_keywords" value="{{ old('seo_keywords') ?? $post->seo_keywords }}" required autofocus>
+                            @error('seo_keywords')
+                                <span class="error-form" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group col-md-7">
+                            <label for="">SEO description</label>
+                            <input class="form-control" type="text" name="seo_description" value="{{ old('seo_description') ?? $post->seo_description }}" required autofocus>
+                            @error('seo_description')
+                                <span class="error-form" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary offset-md-11 mt-3">Submit</button>
                     </div>
                 </form>
             </div>
     </div>
-
-            <div class="card">
-                  <div class="card-header">
-                    <h4>Comments</h4>
-                  </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table table-striped" id="table-1">
-                        <thead>
-                          <tr>
-                            <th class="text-center">User Name</th>
-                            <th>Comment</th>
-                            <th>Date</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-
-                        @if($post->id != null)
-                        @php($comments = App\Comment::where('post_id',$post->id)->get())
-                            @foreach($comments as $comment)
-                                @if(!empty($comment->user_id))
-                                    @php($name = App\User::find($comment->user_id)->name)
-                                @else
-                                    @php( $name = $comment->name)
-                                @endif
-                            <tr>
-                                <td>{{$name}}</td>
-                                <td>{{$comment->message}}</td>
-                                <td>{{ date('D, M d Y h:i:A', strtotime($comment->created_at))}}</td>
-                            </tr>
-                            @endforeach
-                        @endif
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-
-    </section>
+ </section>
 </div>
 @stop

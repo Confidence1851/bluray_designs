@@ -53,12 +53,7 @@ class HomeController extends Controller
     }
     
    
-    public function allposts()
-    {
-        $posts = Post::orderby('created_at','desc')->get();
-        return view('admin.posts',compact('posts'));
-    }
-
+    
 
     public function newproduct()
     {
@@ -363,91 +358,6 @@ class HomeController extends Controller
         return;
     }
 
-    public function newpost(){
-        $post = new Post();
-        $post_cats = $this->post_categories();
-        return view('admin.post',compact('post','post_cats'));
-    }
-
-    public function savepost(Request $request){
-        $id = $request['id'];
-        if(is_null($id)){
-            $title = 'required|unique:posts|max:100';
-            $reqImg = 'required';
-        }
-        else{
-            $post = Post::findorfail($id);
-            if($post->title == $request['title']){
-                $title = 'required' ;
-            }
-            else{
-                $title = 'required|unique:posts|max:100';
-            }
-            $reqImg = 'nullable';
-
-        }
-        $data = $request->validate([
-            'title' => $title,
-            'message' => 'required',
-            'category' => 'required',
-            'status' => 'required',
-            'image' => $reqImg."|image",
-        ]);
-        $user = Auth::user();
-
-        if(!empty($request['image'])){
-
-            $Image_path = public_path('/post_images');
-            
-            $image = $request->file('image');
-            $filename = time().'.'.$image->getClientOriginalExtension();
-
-            // create new image with transparent background color
-            $background = Image::canvas(870, 350, '#ffffff');
-            // read image file and resize it to 262x54
-            $img = Image::make($image);
-            
-            //Resize image
-            $img->resize(870, 350, function ($constraint) {
-                $constraint->aspectRatio();
-                // $constraint->upsize();
-            });
-
-            
-
-            // insert resized image centered into background
-            $background->insert($img, 'center');
-
-            
-            // save
-            $background->save($Image_path.'/'.$filename);   
-
-
-            $data['image'] = $filename;
-        }
-
-        $data['user_id'] = $user->id;
-        $data['slug'] =  Str::slug($data['title']);
-
-        if(is_null($id)){
-            $post = Post::create($data);
-        }
-        else{
-            $post->update($data);
-            // $post->save();
-            // dd($post);
-
-        }
-        Session::flash('msg','Post submitted sucessfully');
-        return redirect()->route('allposts');
-    }
-
-    public function editpost($id){
-        $post = Post::findorfail($id);
-        $post_cats = $this->post_categories();
-        return view('admin.post',compact('post','post_cats'));
-    }
-    
     public function updateRole(Request $request ,$id){
         $request->validate([
             'role' => 'required',

@@ -30,14 +30,16 @@
                         <tbody>
 
                         @foreach($posts as $post)
-                        @php($cmts = App\Comment::where('post_id',$post->id)->count())
                           <tr>
                             <td><a href="{{ route('editpost',$post->id) }}" class="btn btn-primary">Edit</a></td>
-                            <td><img src="{{ asset('public/post_images/'.$post->image ) }}" alt="{{$post->title}}"  style="width:100px" /> </td>
+                            <td><img src="{{ my_asset('post_images/'.$post->image ) }}" alt="{{$post->title}}"  style="width:100px" /> </td>
                             <td>{{$post->title}}</td>
                             <td>{{$post->category}}</td>
                             <td>{{$post->status == 1 ? 'Active' : 'Inactive'}}</td>
-                            <td>{{$cmts}}</td>
+                            <td>
+                              <a href="{{ route("post.comments" , $post->id) }}">
+                                {{$post->comments->count()}}</a>
+                            </td>
                             <td>{{ date('D, d M Y', strtotime($post->created_at))}}</td>
                           </tr>
                         @endforeach

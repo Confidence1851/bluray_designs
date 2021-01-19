@@ -224,7 +224,12 @@
   <script src="{{ $admin_source }}/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
   <script src="{{ $admin_source }}/jquery-ui/jquery-ui.min.js"></script>
   <script src="{{ $admin_source }}/datatables/js/page/datatables.js"></script>
-
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
 </body>
 
 </html>

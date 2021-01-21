@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="{{ $admin_source }}/datatables/css/app.min.css">
     <link rel="stylesheet" href="{{ $admin_source }}/datatables/datatables.min.css">
     <link rel="stylesheet" href="{{ $admin_source }}/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
     @yield('style')
     <style>
         .moreinfo{
@@ -204,9 +207,10 @@
 <!-- offset area start -->
 
     <!-- jquery latest version -->
-    <script src="{{ $admin_source }}/js/vendor/jquery-2.2.4.min.js"></script>
+    {{-- <script src="{{ $admin_source }}/js/vendor/jquery-2.2.4.min.js"></script> --}}
     <!-- <script src="{{ $admin_source }}/js/jquery-3.3.1.js"></script> -->
-    <!-- bootstrap 4 js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <!-- bootstrap 4 js -->
     <script src="{{ $admin_source }}/js/popper.min.js"></script>
     <script src="{{ $admin_source }}/js/bootstrap.min.js"></script>
     <script src="{{ $admin_source }}/js/owl.carousel.min.js"></script>
@@ -224,11 +228,17 @@
   <script src="{{ $admin_source }}/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
   <script src="{{ $admin_source }}/jquery-ui/jquery-ui.min.js"></script>
   <script src="{{ $admin_source }}/datatables/js/page/datatables.js"></script>
-  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
+
+<!-- include summernote css/js -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
   <script>
-      tinymce.init({
-        selector: '#mytextarea'
-      });
+    //   tinymce.init({
+    //     selector: '#mytextarea'
+    //   });
+    $(document).ready(function() {
+        $('#mytextarea').summernote();
+    });
     </script>
 </body>
 

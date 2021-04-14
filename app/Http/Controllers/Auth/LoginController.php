@@ -36,4 +36,12 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function redirectTo(){
+        $previous_url = url()->previous();
+        if ($previous_url == route("brand_4_free.index")) {
+            $this->redirectTo = $previous_url;
+        }
+        return $this->redirectTo;
+    }
 }

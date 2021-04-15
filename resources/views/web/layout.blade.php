@@ -48,7 +48,7 @@
 
    @if ($withHeader ?? true)
 
-   
+
   <div id="wrapper">
     <!-- toggle top area -->
     <div class="hidden-top">
@@ -120,7 +120,7 @@
                     </div>
                   </div>
                   <input type="hidden" name="oldtype" id="signup-reg" value="oldreg">
-                  
+
                   <div class="control-group">
                     <label class="control-label" for="inputEmail">Phone Number</label>
                     <div class="controls">
@@ -179,12 +179,12 @@
                   </div>
 
                   <input type="hidden"  name="oldtype" id="login-type" value="oldlogin">
-                  
+
                   <div class="control-group">
                     <label class="control-label" for="inputSignupPassword">Password</label>
                     <div class="controls">
                       <input type="password" id="inputloginPassword" placeholder="Password" name="password" required autocomplete="current-password">
-                   
+
                     </div>
                   </div>
                   <div class="control-group">
@@ -235,7 +235,7 @@
           <div class="span4">
             <div class="logo">
               <a href="{{ url('/') }}"><img src="{{ $web_source }}/img/logo.png" alt="" width="300" class="Bluraydesigns logo" /></a>
-              
+
             </div>
           </div>
           <div class="span8">
@@ -244,8 +244,8 @@
                 <nav>
                   <ul class="nav topnav">
                     <li><a href="{{ url('/') }}">HOME </a></li>
-                    
-                    
+
+
                       <li class="dropdown">
                       <a href="#">ALL PRODUCTS & SERVICES <i class="icon-angle-down"></i></a>
                       <ul class="dropdown-menu">
@@ -255,15 +255,15 @@
                           @endforeach
                       </ul>
                     </li>
-                     
+
                     <li><a href="{{ route('about_us') }}">ABOUT US </a></li>
 
                     <li><a href="{{ route("brand_4_free.index") }}">BRAND 4 FREE </a></li>
-                     
+
                     <li class="dropdown" style="display:none">
                       <a href="#">Portfolio <i class="icon-angle-down"></i></a>
                       <ul class="dropdown-menu">
-                      
+
                       <?php
                         $cats = [];
                         foreach($products as $p){
@@ -277,7 +277,7 @@
                         ?>
                         @foreach($cats as $category)
                           <li><a href="{{ route('portfolio',$category) }}">{{$category}}</a></li>
-                        @endforeach 
+                        @endforeach
                       </ul>
                     </li>
                     <li>
@@ -300,7 +300,7 @@
 
 
 @yield('content')
-    
+
     <section id="bottom">
       <div class="container">
         <div class="row">
@@ -315,7 +315,7 @@
         </div>
       </div>
     </section>
-    
+
     @if ($withFooter ?? true)
       <footer>
         <div class="container">
@@ -326,7 +326,7 @@
                 <ul class="link-list">
                   <li><a href="#">About us</a></li>
                   <li><a href="#">Product & Services</a></li>
-                  <li><a href="#">Explore our portfolio</a></li> 
+                  <li><a href="#">Explore our portfolio</a></li>
                   <li><a href="#">Get in touch with us</a></li>
                   <li><a href="#">Blog</a></li>
                 </ul>
@@ -340,15 +340,15 @@
                   <li><a href="#">Printing Machines and Methods</a></li>
                   <li><a href="#">Privacy policy</a></li>
                   <li><a href="#">Career center</a></li>
-                
+
                 </ul>
               </div>
             </div>
             <div class="span3">
               <div class="widget">
                 <h5 class="widgetheading" style="color:#0CF;">Follow us on:
-                
-                
+
+
                 <div class="span6 pull-left">
                 <ul class="social-network">
                   <li><a href="#" data-placement="bottom" title="Facebook"><i class="icon-facebook icon-square"></i></a></li>
@@ -358,23 +358,23 @@
                   <li><a href="#" data-placement="bottom" title="Google plus"><i class="icon-google-plus icon-square"></i></a></li>
                 </ul>
               </div>
-                
-                
+
+
                 </h5>
                 <div class="flickr_badge">
           <div id="fb-root"></div>
 
                 <div class="clear">
                 </div>
-                
+
                 <div class="fb-page" data-href="https://www.facebook.com/bluraydesigntech/" data-tabs="timeline, messages" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-height="150" data-width="300" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/bluraydesigntech/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/bluraydesigntech/">Bluray DesignTech</a></blockquote></div>
               </div>
             </div>
             </div>
-            
-            
-            
-            
+
+
+
+
             <div class="span3">
               <div class="widget">
                 <h5 class="widgetheading">Get in touch with us</h5>
@@ -410,7 +410,7 @@
                   </div>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -421,7 +421,7 @@
 
   @if ($withJavascript ?? true)
 
-  
+
   <!-- javascript
     ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
@@ -464,7 +464,7 @@
     time: 7000
 });
   </script>
-  
+
   <script>
               new WOW(
 			  {
@@ -474,16 +474,16 @@
 				  time: 2000,
 				  delay: 20,
 			  }
-			  
+
 			  ).init();
               </script>
-  
+
   <script src="{{ $web_source }}/js/custom.js"></script>
 
   @endif
   <!-- Template Custom JavaScript File -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
-  
+
 @yield('script')
 </body>
 </html>

@@ -59,9 +59,10 @@ class BrandForFreeController extends Controller
     {
         $settings = globalSettings();
         $voteEndDate = !empty($date = $settings->vote_ends) ? date("l d F, Y", strtotime($date)) : "Inactive";
+
         if ($voteEndDate == "Inactive") {
             $voteStatus = "inactive";
-        } elseif ($voteEndDate >= today()) {
+        } elseif (carbon()->parse($voteEndDate)->isPast()) {
             $voteStatus = "ended";
         } else {
             $voteStatus = "active";

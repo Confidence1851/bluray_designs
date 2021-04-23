@@ -30,7 +30,7 @@ class Brand extends Model
         if ($this->reward == 3) {
             $reward = "3rd place";
         }
-        return $reward ?? "None";
+        return $reward ?? "";
     }
 
     protected $guarded = [];

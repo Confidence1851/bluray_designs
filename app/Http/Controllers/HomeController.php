@@ -51,9 +51,9 @@ class HomeController extends Controller
         $products = Product::orderby('created_at','desc')->get();
         return view('admin.products',compact('products'));
     }
-    
-   
-    
+
+
+
 
     public function newproduct()
     {
@@ -80,7 +80,7 @@ class HomeController extends Controller
                 'design_price' => 'required',
                 'caption' => 'required',
             ]);
-            
+
             $data['status'] = 'Pending';
             $product = Product::create($data);
         }
@@ -106,11 +106,11 @@ class HomeController extends Controller
             $product->caption = $data['caption'];
             $product->save();
         }
-        
+
         return response()->json(['id' => $product->id]);
     }
 
-    
+
 
     public function addprodimg(Request $request){
         $data = $request->validate([
@@ -118,7 +118,7 @@ class HomeController extends Controller
             'image' => 'required',
         ]);
         $Image_path = public_path('/product_images');
-        
+
         $image = $request->file('image');
         $filename = time().'.'.$image->getClientOriginalExtension();
 
@@ -136,12 +136,12 @@ class HomeController extends Controller
         $background->insert($img, 'center');
 
         // save
-        $background->save($Image_path.'/'.$filename);   
+        $background->save($Image_path.'/'.$filename);
 
 
         $data['image'] = $filename;
         $picture = Picture::create($data);
-        
+
         return response()->json(['id' => $picture->id,'image' => $picture->image]);
     }
 
@@ -224,7 +224,7 @@ class HomeController extends Controller
 
 
         $Image_path = public_path('/spec_images');
-        
+
         $image = $request->file('image');
         $filename = time().'.'.$image->getClientOriginalExtension();
 
@@ -232,21 +232,21 @@ class HomeController extends Controller
         $background = Image::canvas(300, 280, '#ffffff');
         // read image file and resize it to 262x54
         $img = Image::make($image);
-        
+
         //Resize image
         $img->resize(300, 280, function ($constraint) {
             $constraint->aspectRatio();
             // $constraint->upsize();
         });
 
-        
+
 
         // insert resized image centered into background
         $background->insert($img, 'center');
 
-        
+
         // save
-        $background->save($Image_path.'/'.$filename);   
+        $background->save($Image_path.'/'.$filename);
 
 
         $data['image'] = $filename;
@@ -351,7 +351,7 @@ class HomeController extends Controller
                 catch(Exception $e){}
                 $spec->delete();
             }
-            
+
             // finally delete product
             $prod->delete();
         }
@@ -368,6 +368,6 @@ class HomeController extends Controller
         return redirect()->back()->with('success','Role updated!');
     }
 
-    
+
 
 }

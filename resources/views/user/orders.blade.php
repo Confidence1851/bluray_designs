@@ -6,7 +6,7 @@
     <div class="main-content">
         <section class="section">
           <div class="section-body">
-    
+
                 <div class="card">
                   <div class="card-header">
                     <h4>Orders
@@ -40,7 +40,7 @@
                             <td>{{$order->status}}</td>
                             <td>{{ date('D, d M Y', strtotime($order->created_at))}}</td>
                           </tr>
-                       
+
                           <div class="modal fade bd-example-modal-md" id="vieworder-{{$order->id}}">
                             <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                               <div class="modal-content">
@@ -69,10 +69,14 @@
                         </tbody>
                       </table>
                     </div>
+
+                    <div class="text-center mt-4">
+                        <a href="{{ route("brand_4_free.index") }}" class="btn btn-link">Go to Brand 4 Free page</a>
+                    </div>
                   </div>
                 </div>
               </div>
-                           
+
         </section>
     </div>
 

@@ -15,7 +15,7 @@ class Brand extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, "user_id",);
+        return $this->belongsTo(User::class, "user_id");
     }
 
 
@@ -42,7 +42,7 @@ class Brand extends Model
 
     public function brandReward()
     {
-        return $this->hasOne(BrandRewardDesign::class, "brand_id",);
+        return $this->hasOne(BrandRewardDesign::class, "brand_id");
     }
 
     public static function deleteWithImage(Brand $model, $deleteDesigns = true)

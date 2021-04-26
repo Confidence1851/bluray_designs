@@ -69,11 +69,9 @@
                         </tbody>
                       </table>
                     </div>
-
-                    <div class="text-center mt-4">
-                        <a href="{{ route("brand_4_free.index") }}" class="btn btn-link">Go to Brand 4 Free page</a>
-                    </div>
                   </div>
+
+                  <p style="margin-left:5%;"><b>To apply for brand4free</b> <a href="https://bluraydesigns.com/brand-for-free">click here</a></p>
                 </div>
               </div>
 

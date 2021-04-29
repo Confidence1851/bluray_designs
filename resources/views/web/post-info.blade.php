@@ -1,4 +1,8 @@
-@extends('web.layout')
+@extends('web.layout' , [
+"meta_title" => $post->title,
+"meta_keywords" => $post->seo_keywords,
+"meta_description" => $post->seo_description,
+])
 
 @section('content')
     <section id="inner-headline">
@@ -35,7 +39,7 @@
                   <p>
                   {!!  $post->message !!}
                   </p>
-                  
+
                   <div class="bottom-article">
                     <ul class="meta-post">
                       <li><i class="icon-calendar"></i><a href="#"> {{date('D, M d y',strtotime($post->created_at))}}</a></li>
@@ -47,7 +51,7 @@
                 </div>
               </div>
             </article>
-        
+
             <div class="comment-area">
               <h4><span class="comment-count">{{ $post->comments->count() }}</span> Comments</h4>
                 <div id="comment-list">
@@ -103,7 +107,7 @@
                       <img src="{{ my_asset('post_images/'.$relate->image ) }}" class="pull-left" alt="{{$relate->title}}" />
 
                       <h6><a href="{{ route('blogpost',['id'=> $relate->id,'slug' => $relate->slug]) }}">{{$relate->title}}</a></h6>
-                     
+
                     </li>
                     @endforeach
                   </ul>

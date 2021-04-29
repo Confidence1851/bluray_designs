@@ -1,4 +1,8 @@
-@extends('web.layout' , ["withHeader" => true , "withFooter" => true])
+@extends('web.layout' , ["withHeader" => true , "withFooter" => true,
+"meta_title" => "",
+"meta_keywords" => "",
+"meta_description" => ""
+])
 {{-- @section('style')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -14,8 +18,8 @@
                 <h2 class="hidden-phone" style="text-align:center; color:#666; font-family: Century Gothic, Arial, Tahoma; font-size:35px; padding-top:1%;">
                     Welcome to Bluray DesignTech's<br> <span style="font-size:60px; color:#036;"> <b><i>BRAND4FREE</i></b>
                         INITIATIVE</span></h2>
-                        
-                        
+
+
                         <div class="visible-phone" style="margin-top:10%;">
                             <p style=" font-size:18px; margin-bottom:0px; text-align:center; font-weight:bold; font-family: Futura, Tahoma;"> Welcome to Bluray DesignTech's </p>
                             <h4 style=" color:#036; padding-top:0px;"> <b><i>BRAND4FREE</i></b> INITIATIVE</h4>
@@ -34,7 +38,7 @@
 
 
 
-           
+
             <div class="span5" style="text-align:justify">
                 <hr>
                 <p>As a corporate branding agency, we are passionate about helping businesses; particularly SMEs grow their

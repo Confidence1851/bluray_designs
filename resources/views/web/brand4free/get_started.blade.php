@@ -1,5 +1,9 @@
 @extends('web.layout' , ["withHeader" => true , "withFooter" => true , "withStyles" => true , "withJavascript" =>
-true])
+true,
+"meta_title" => "",
+"meta_keywords" => "",
+"meta_description" => ""
+])
 {{-- @section('style')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -83,6 +87,7 @@ true])
                     style="text-align:justify; padding:1%; margin-left:3%; border:#CCC; border-style:solid; border-width:1px 1px 1px 1px; border-bottom-left-radius:10px; border-bottom-right-radius:10px; border-top-left-radius:10px; border-top-right-radius:10px;">
                     <style></style>
 
+                    @if($canApply)
                     <form method="post" action="{{ route('brand_4_free.get_started') }}" class="was-validated"
                         enctype="multipart/form-data">@csrf
                         <div class="form-group">
@@ -146,6 +151,12 @@ true])
 
 
                     </form>
+                    @else
+                    <div class="text-center">
+                        <p><b>Application is currently closed</b></p>
+                        <p>Application for Brand4free is open from 1st to 15th of each month. Kindly check back within these dates.</p>
+                    </div>
+                    @endif
 
                 </div>
 

@@ -1,4 +1,8 @@
-@extends('web.layout')
+@extends('web.layout' , [
+"meta_title" => "",
+"meta_keywords" => "",
+"meta_description" => "",
+])
 
 @section('content')
     <section id="inner-headline">
@@ -38,7 +42,7 @@
                         @foreach($cats as $category)
                           <li class="{{$category}} {{$name ? 'active' : ''}}" ><a href="#">{{$category}}</a></li>
                         @endforeach
-              
+
             </ul>
             <div class="clearfix">
             </div>
@@ -59,7 +63,7 @@
                   </li>
                   @endforeach
                   <!-- End Item Project -->
-                 
+
                 </ul>
               </section>
             </div>

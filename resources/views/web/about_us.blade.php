@@ -1,4 +1,8 @@
-@extends('web.layout')
+@extends('web.layout' , [
+"meta_title" => "",
+"meta_keywords" => "",
+"meta_description" => "",
+])
 
 @section('content')
     <section id="inner-headline">
@@ -41,7 +45,7 @@ research) while working on a design project for our client has afforded us the o
 to became the trusted corporate branding partner of over 200 businesses over the past 5
 years.
             </p>
-          
+
             <p>
       At Bluray Designs, We help businesses particularly SMEs gets discovered by helping them
 see the need to get branded and also execute the right branding options through
@@ -83,7 +87,7 @@ the most professional and virtually appealing branding/advertising options.
           <div class="span12">
             <h4>Meet the CEO </h4>
           </div>
-          
+
           <div class="span3">
             <img src="https://bluraydesigns.com/public/web/img/ceo-photo.jpg" alt="" class="img-polaroid" />
             <div class="roles">
@@ -95,9 +99,9 @@ the most professional and virtually appealing branding/advertising options.
               </p>
             </div>
           </div>
-          
+
           <div class="span9">
-           <p> 
+           <p>
            Bluray Design Tech is a registered company operating in Lagos-Nigeria, fully owned and
 controlled by Aimeihino Courage, a young and experienced Graphic/Web Designer. He
 has 6 years of design experience as a self-taught graphic designer. He has constantly
@@ -112,8 +116,8 @@ business management skills. Aimiehino Courage is a:
 </ul>
            </p>
           </div>
-          
-          
+
+
         </div>
         <!-- divider -->
         <div class="row">

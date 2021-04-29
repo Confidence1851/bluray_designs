@@ -1,9 +1,13 @@
-@extends('web.layout')
+@extends('web.layout' , [
+"meta_title" => "",
+"meta_keywords" => "",
+"meta_description" => "",
+])
 
 @section('content')
 
 <style>
-            
+
             @import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
 .col-item
 {
@@ -28,7 +32,7 @@ font-style:italic;
 color:#C06;
 
 	}
-	
+
 	h5
 	{
 		font-size:16px;
@@ -127,11 +131,11 @@ color:#333;
              <div class="row">
         <div class="row" style="margin-bottom:0px; padding-top:7%;">
             <div class="span12" style=" margin-bottom:0px;">
-            
+
                 <h4 class="text-center" style="color:#036; font-family:Century Gothic, Tahoma, Geneva, sans-serif">
                     ---- OUR PRODUCTS ----</h4>
             </div>
-          
+
         </div>
         <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
             <!-- Wrapper for slides -->
@@ -139,14 +143,14 @@ color:#333;
             <div class="carousel-inner">
                 <div class="item active">
                     <div class="row products_list">
-                    
-                    
+
+
                     @foreach($products as $product)
                       @php($last_img = App\Picture::where('product_id',$product->id)->orderby('created_at','desc')->first())
                       @php($quan = App\Quantity::where('product_id',$product->id)->orderby('quantity','asc')->first())
                       @php($type = App\Type::where('product_id',$product->id)->orderby('price','asc')->first())
                       @php($low_price = (($quan->quantity * $type->price) - $quan->discount) )
-                      
+
                      <div class="span3">
                         <a href="{{ route('productdetail',$product->id)}}">
                             <div class="col-item">
@@ -160,22 +164,22 @@ color:#333;
                                             <h6 class="price-text-color h6adjust">
                                                  from <b class="product_price" >{{$low_price}}</b> | {{$product->caption}}</h6>
                                         </div>
-                                     
+
                                     </div>
-                                    
+
                                     <div class="row">
                                     <div class="text-center" style="margin-top:0px; padding-top:0px;">
-                                  
-                                   
+
+
                                     <p style="margin-top:0px;" >
-                        
-                                    
-                                
+
+
+
                                  <button class="btn btn-lg btn-primary" style="background-color:#0275d8" >  ORDER NOW </button>
                                   </a>
                                     </p>
-                                 
-                                        
+
+
                                     </div>
                                     </div>
                                     <div class="clearfix">
@@ -184,22 +188,22 @@ color:#333;
                             </div>
                         </div>
                        @endforeach
-                    
-                    
-                       
-                       
+
+
+
+
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
  </div>
    </section>
-   
-   
-   
-   
 
-    
-@stop  
+
+
+
+
+
+@stop

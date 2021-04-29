@@ -23,7 +23,11 @@ class BrandForFreeController extends Controller
     public function get_started(Request $request)
     {
         if ($request->getMethod() == "GET") {
-            return view("web.brand4free.get_started");
+            $canApply = true;
+            if(today()->format("d") >= 16){
+                $canApply = false;
+            }
+            return view("web.brand4free.get_started" , ["canApply" => $canApply ]);
         }
         // dump($request->all());
 

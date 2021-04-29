@@ -3,9 +3,14 @@
 
 <head>
   <meta charset="utf-8">
+  @if (!empty($meta_title ?? ""))
+  <title>{{ $meta_title ?? "" }} - Bluray Designs</title>
+  @else
   <title>Bluraydesigns - Corporate Branding, Printing, Graphics & Web Designs in Lagos, Nigeria.</title>
+  @endif
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="" />
+  <meta name="description" content="{{ $meta_description ?? "" }}" />
+  <meta name="keywords" content="{{ $meta_keywords ?? "" }}" />
   <meta name="author" content="" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
 

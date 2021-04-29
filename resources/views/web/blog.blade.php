@@ -1,4 +1,8 @@
-@extends('web.layout')
+@extends('web.layout' , [
+"meta_title" => "",
+"meta_keywords" => "",
+"meta_description" => "",
+])
 
 @section('content')
     <section id="inner-headline">

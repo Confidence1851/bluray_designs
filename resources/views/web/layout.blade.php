@@ -74,6 +74,18 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=471466423986047&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Facebook Pixel Code -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-104839065-1">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-104839065-1');
+</script>
   
 </head>
 
@@ -343,7 +355,7 @@ src="https://www.facebook.com/tr?id=471466423986047&ev=PageView&noscript=1"
 <div id="mc_embed_signup">
 <form action="https://bluraydesigns.us6.list-manage.com/subscribe/post?u=77d16e5948822fffcb77fef24&amp;id=6223ad22ad" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <div id="mc_embed_signup_scroll">
-	<h3>Subscribe to Newsletters and amazing offers from us</h3>
+	<h3>Subscribe to get special print offers</h3>
 <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
 <div class="mc-field-group">
 	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>

@@ -38,6 +38,10 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $previous_url = url()->previous();
+        if ($previous_url == route("brand_4_free.index")) {
+            $this->redirectTo = $previous_url;
+        }
     }
 
     /**

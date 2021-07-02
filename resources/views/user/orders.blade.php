@@ -7,6 +7,8 @@
         <section class="section">
           <div class="section-body">
 
+            <h3 class="m-4">Hello {{ $user->name }}</h3>
+
                 <div class="card">
                   <div class="card-header">
                     <h4>Orders

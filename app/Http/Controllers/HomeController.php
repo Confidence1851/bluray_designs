@@ -40,7 +40,7 @@ class HomeController extends Controller
         $user = Auth::user();
         if($user->role == 'User'){
             $orders = Order::where('user_id',$user->id)->orderby('created_at','desc')->get();
-            return view('user.orders',compact('orders'));
+            return view('user.orders',compact('orders' , 'user'));
         }
 
         return view('admin.home');
